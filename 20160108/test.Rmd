@@ -1,0 +1,29 @@
+---
+title: "test"
+author: "®γσ, Eng Lian Hu <img src='figure/ShirotoNorimichi.jpg' width='24'>"
+date: "1/9/2016"
+output: html_document
+---
+
+[46.101.160.242](http://46.101.160.242)
+
+<http://46.101.160.242>
+
+```{r load-packages, include=FALSE}
+library('knitr')
+```
+
+```{diff}
++[root@xueqing ~]# useradd test2
++ [root@xueqing ~]# userdel test2
+[root@xueqing ~]# useradd test2
+- useradd: warning: 
+```
+
+<s>testing text</s>
+
+**sample 1**
+
+```{r}
+data_frame('R 程序包路径'=.libPaths(), '®Studio'=c('只会出现在电脑版','电脑板和服务器版','电脑板和服务器版'), '特征'=c('只有登入个别电脑才能读取程序包','只要是同一个服务器下の用户都能读取程序包','只要是同一个服务器下の用户都能读取程序包'), '分别'=c('安装在每一台电脑の程序包都是独立体','安装在每个用户下の程序包都是独立体','安装在每个用户下の程序包都是共同体'), '备注'=c('修改该路径中の文件，只有该电脑受到影响','修改该路径中の文件，只有该用户受到影响','修改该路径中の文件，所有用户都受到影响')) %>% kable(caption='table : test')
+```
