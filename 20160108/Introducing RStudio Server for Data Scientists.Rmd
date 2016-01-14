@@ -1,7 +1,6 @@
 ---
-title: "®StudioとShiny服务器"
-author: '[®γσ, Eng Lian Hu](http://englianhu.wordpress.com) <img src=''figure/ShirotoNorimichi.jpg''
-  width=''24''> 白戸則道®'
+title: "![](https://www.rstudio.com/wp-content/uploads/2014/03/blue-125.png)とShiny服务器"
+author: "[®γσ, Eng Lian Hu](http://englianhu.wordpress.com) <img src='figure/ShirotoNorimichi.jpg' width='24'> 白戸則道®"
 date: "1/8/2016"
 output:
   html_document:
@@ -17,9 +16,13 @@ output:
     fig_height: 3
     fig_width: 5
     highlight: haddock
+    theme: cerulean
     toc: yes
+    toc_depth: 4
   word_document:
     fig_caption: yes
+    fig_height: 3
+    fig_width: 5
 ---
 
 **为数据科学家们量身定做の专业统计软件 --- [®Studio服务器](https://www.rstudio.com/)**
@@ -35,15 +38,15 @@ suppressAll(lib(pkgs)); rm(pkgs)
 
 ## 文摘简介
 
-  前阵子受[堰平](http://yanping.me/)兄邀请分享**R**语言教程，俺顿时萌起**工欲善其事，必先利其器**以及身为剑士の日本武士精神，**剑在人在，剑亡人亡**の念头。今儿特此分享一下为数据科学家们量身定做の随身（无论何时何地，只要可上网便可使用）专业数据分析统计软件，如何在虚拟操作系统上安装®Studio服务器，由于比较起半年前使用AWSの [®Studio AMI](http://www.louisaslett.com/RStudio_AMI/)，这 [DigitalOcean.com](https://www.digitalocean.com/) 价廉物美，故此在下选择使用 DO。
+  前阵子受[堰平](http://yanping.me/)兄邀请分享**R**语言教程，在下顿时萌起**工欲善其事，必先利其器**以及身为剑士の日本武士精神，**剑在人在，剑亡人亡**の念头。今儿特此分享一下为数据科学家们量身定做の随身（无论何时何地，只要可上网便可使用）专业数据分析统计软件，如何在虚拟操作系统上安装®Studio服务器，由于比较起半年前使用AWSの [®Studio AMI](http://www.louisaslett.com/RStudio_AMI/)，这 [DigitalOcean.com](https://www.digitalocean.com/) 价廉物美，故此在下选择使用 DO。
   
-  然而®Studio AMI作者[Louis Aslett](http://www.louisaslett.com)已设置好所有设定，您只需区区几个按键即可使用（虽两者都需要付月租，而自然手动安装，没有管理员权限，每个月得付月租）。倘若您有安卓行动电话，亦可直接到GooglePlay签购[®Instructor](https://play.google.com/store/apps/details?id=appinventor.ai_RInstructor.R2&hl=en)，作者[Shidan Murphy](http://www.rinstructor.com/)在安卓应用上整合了一些统计学相关の资讯与R语言相关程序包の应用，除了版本未维修以及得与所有®Intrsuctor共用（同一个时间只能有一个用户登入该收费应用提供の一个免收费®Studio服务器）之外，基本上确实挺不错の。在此简略比较一下俺使用过の软件：
+  然而®Studio AMI作者[Louis Aslett](http://www.louisaslett.com)已设置好所有设定，您只需区区几个按键即可使用（虽两者都需要付月租，而自然手动安装，没有管理员权限，每个月得付月租）。倘若您有安卓行动电话，亦可直接到GooglePlay签购[®Instructor](https://play.google.com/store/apps/details?id=appinventor.ai_RInstructor.R2&hl=en)，作者[Shidan Murphy](http://www.rinstructor.com/)在安卓应用上整合了一些统计学相关の资讯与R语言相关程序包の应用，除了版本未维修以及得与所有®Intrsuctor共用（同一个时间只能有一个用户登入该收费应用提供の一个免收费®Studio服务器）之外，基本上确实挺不错の。在此简略比较一下在下使用过の软件：
   
-| **种类**                                                                                         |      **简易性**      |            **权限自主权**               |           **收费**           |                  **额外服务** |
+|                 种类                                                                             |               简易性 |                              权限自主权 |                         收费 |                      额外服务 |
 |:-------------------------------------------------------------------------------------------------|----------------------|-----------------------------------------|------------------------------|------------------------------:|
-| [DigitalOcean](https://www.digitalocean.com/)                                                    | 手动由始开始安装     | 所有自主权，可以自行添加任何会员        | 月租由5美元起                | 支持大数据分析                |
-| [®Studio AMI](http://www.louisaslett.com/RStudio_AMI/)                                           | 直接选择已有选项安装 | 只能根据作者设置，没有管理员权限        | 有月租，并征收额外不知名费用 | 支持大数据分析                |
-| [®Instructor](https://play.google.com/store/apps/details?id=appinventor.ai_RInstructor.R2&hl=en) | 无需安装，直接使用   | 作者已多时没有维修，已过时版本 并无权限 | 一次签购低于10美元           | 软件附有统计学与基本R语言教程 |
+| [DigitalOcean](https://www.digitalocean.com/)                                                    |     手动由始开始安装 |        所有自主权，可以自行添加任何会员 |                月租由5美元起 | 支持大数据分析                |
+| [®Studio AMI](http://www.louisaslett.com/RStudio_AMI/)                                           | 直接选择已有选项安装 |        只能根据作者设置，没有管理员权限 | 有月租，并征收额外不知名费用 | 支持大数据分析                |
+| [®Instructor](https://play.google.com/store/apps/details?id=appinventor.ai_RInstructor.R2&hl=en) |   无需安装，直接使用 | 作者已多时没有维修，已过时版本 并无权限 |           一次签购低于10美元 | 软件附有统计学与基本R语言教程 |
 
 *table-0.0.1 : comparison of used ®Studio server*
 
@@ -79,35 +82,33 @@ suppressAll(lib(pkgs)); rm(pkgs)
 
 ### 第1.2章 : 选择网络服务器
   
-  登入默认/原始用户root后，您可以先行创建个用户，修改密码后再给予管理权。倘若想了解执行命令代码详情，请参阅第[3.章 : CentOS 7用户账户配置]。
+  登入默认/原始用户root后，您可以先行创建个用户，修改密码后再给予管理权。倘若想了解执行命令代码详情，请参阅[第3.章 : CentOS 7用户账户配置]。
   
 ```{}
 [root@xueqing ~]# adduser yugawa
 [root@xueqing ~]# passwd yugawa
-[root@xueqing ~]# gpasswd -a yugawa sudo
 [root@xueqing ~]# visudo
 ```
 
-  在`visudo`或者`vi /etc/sudoers`后，寻找以下代码：
+  在`visudo`或者`vi /etc/sudoers`后寻找代码`root  ALL=(ALL) ALL`と`%wheel ALL=(ALL) NOPASSWD: ALL`后，在其代码添加一行，给予用户yugawa与root一样同享最高管理权限，并运行同类执行代码无需输入密码：
   
 ```{}
 ## Allow root to run any commands anywhere
-root ALL=(ALL) ALL
+root      ALL=(ALL)   ALL
+yugawa    ALL=(ALL)   ALL               \\添加这一行
+...
+## Same thing without a password
+%wheel    ALL=(ALL)   NOPASSWD: ALL
+yugawa    ALL=(ALL)   NOPASSWD: ALL     \\添加这一行
 ```
-
-  然后在其代码添加一行，给予用户yugawa与root一样同享最高管理权限：
   
-```{}
-yugawa ALL=(ALL) ALL
-```
-
-  点击键盘上のEsc后`:wq`=储存并退出后（`:q!`=不储存而退出）。委任并授权了一位管理员后，再来就交给管理员处理了。有关CentOS 7服务器设置之相关详情，请参阅[Initial Server Setup with CentOS 7](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-centos-7)。
+  点击键盘上のEsc后`:wq`（不行就`:wq!`）=储存并退出后（`:q!`=不储存而退出）。委任并授权了一位管理员后，再来就交给管理员处理了。有关CentOS 7服务器设置之相关详情，请参阅[Initial Server Setup with CentOS 7](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-centos-7)。
 
 ```{}
 [root@xueqing ~]# su - yugawa
 ```
 
-  有关`su`于`sudo su`之别，详情请参考：
+  有关`su`と`sudo su`之别，详情请参考：
   
   * [Is “sudo su -” considered a bad practice?](http://serverfault.com/questions/619133/is-sudo-su-considered-a-bad-practice)
   * [Difference between su and sudo su](http://askubuntu.com/questions/620936/difference-between-su-and-sudo-su)
@@ -139,43 +140,47 @@ yugawa ALL=(ALL) ALL
 ```{}
 [yugawa@xueqing ~]$sudo vim /etc/yum.repos.d/nginx.repo
 ```
-
+  
   然后再把以下代码拷贝粘贴到文档内储存。
 
 ```{}
 [nginx]
 name=nginx repo
-baseurl=http://nginx.org/packages/mainline/centos/$releasever/$basearch/
+baseurl=http://nginx.org/packages/centos/$releasever/$basearch/
 gpgcheck=0
 enabled=1
 ```
 
-  点击键盘上のEsc后`:wq`=储存并退出后（`:q!`=不储存而退出），可以开始安装网络服务器了。
+  点击键盘上のEsc后`:wq`（不行就`:wq!`）=储存并退出后（`:q!`=不储存而退出），可以开始安装网络服务器了。
 
 ```{}
 [yugawa@xueqing ~]$ sudo yum install -y nginx
 ```
-
-  倘若您有设置防火墙导致无法运行nginx，您可以尝试运行以下代码或查阅[How To Install Nginx on CentOS 7](https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-centos-7)以了解更多详情。
-
+  
+  安装完毕后，启动网络服务器如下：
+  
 ```{}
 [yugawa@xueqing ~]$ sudo systemctl start nginx
-
-[yugawa@xueqing ~]$ sudo firewall-cmd --permanent --zone=public --add-service=http 
-[yugawa@xueqing ~]$ sudo firewall-cmd --permanent --zone=public --add-service=https
-[yugawa@xueqing ~]$ sudo firewall-cmd --reload
 ```
-
-  安装完毕后，您在尝试登入<http://46.101.160.242>，目前您将看到以下页面，表示您の网络服务器已经成功建立。
+  
+  您在尝试登入<http://46.101.160.242>，目前您将看到以下页面，表示您の网络服务器已经成功建立。
 
 ![*figure-1.2.1 : nginx-welcome-webpage*](figure/nginx-welcome.jpg)
 
   而目前您可以通过以下代码，自行**启动**、**停止**或者**重启**您自个儿建立の网络服务器。有关systemctl，请参阅[第3.5章 : 用户安全配置]。
   
 ```{}
-[yugawa@xueqing ~]$ sudo systemctl nginx stop
 [yugawa@xueqing ~]$ sudo systemctl nginx start
+[yugawa@xueqing ~]$ sudo systemctl nginx stop
 [yugawa@xueqing ~]$ sudo systemctl nginx restart
+```
+
+  倘若您有设置防火墙导致无法运行nginx，您可以尝试运行以下代码或查阅[How To Install Nginx on CentOS 7](https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-centos-7)以了解更多详情。
+
+```{}
+[yugawa@xueqing ~]$ sudo systemctl start nginx
+[yugawa@xueqing ~]$ sudo firewall-cmd --permanent --zone=public --add-service=http [yugawa@xueqing ~]$ sudo firewall-cmd --permanent --zone=public --add-service=https
+[yugawa@xueqing ~]$ sudo firewall-cmd --reload
 ```
 
 #### nginx网络服务器の设定
@@ -192,19 +197,21 @@ enabled=1
   * [第2.1章 : 安装R]
   * [第2.2章 : 安装R服务器中の程序包]
   * [第2.3章 : 安装®Studio服务器]
+    * [®Studio服务器设置]
     * [自动读取程序包]
   * [第2.4章 : 安装Shiny服务器]
     * [Shiny服务器设置]
+    * [Shiny完整手册]
 
 
 ### 第2.1章 : 安装R
-
+  
   就如之前所说，Red HatとCentOS操作系统のR语言统计软件收集在epel资源库中，您目前可以安装资源库中最新版本のR（CRAN目前维护のLinux版R，请查阅[此处](https://cran.rstudio.com/bin/)）。
 
 ```{}
 [yugawa@xueqing ~]$ sudo yum install -y R
 ```
-
+  
   然后您`R --version`一下，您就知道所安装のR版本。
 
 ```{}
@@ -212,7 +219,7 @@ enabled=1
 ```
   
   检验了R版本后，您需要稍微调整一下R服务器。基于在下亦**时常遇到记忆体容量有限の障碍**，故此事先为R添加个swap腾空出1Gの记忆体容量，以防安装R程序包出现容量不足の困境。
-  
+
 ```{}
 [yugawa@xueqing ~]$ sudo /bin/dd if=/dev/zero of=/var/swap.1 bs=1M count=1024
 [yugawa@xueqing ~]$ sudo /sbin/mkswap /var/swap.1
@@ -220,7 +227,9 @@ enabled=1
 [yugawa@xueqing ~]$ sudo sh -c 'echo "/var/swap.1 swap swap defaults 0 0 " >> /etc/fstab'
 ```
 
-  然后`free -m`检查一下您所修改の是否已经更新，您也可以`df -h`查看一下您の虚拟操作系统の容量使用量相关信息。
+  您可以`free -m`检查一下您所修改の是否已经更新，您也可以`df -h`查看一下您の虚拟操作系统の容量使用量相关信息。您亦可重启Droplet后`free -m`查询系统是否已修改成默认1Mのswap空间。
+  
+  详情请参阅[Adding Swap to any EC2 Instance](http://www.the-tech-tutorial.com/adding-swap-to-any-ec2-instance/)，详细解释了以上代码の含义，然后`sudo sh -c 'echo "/var/swap.1 swap swap defaults 0 0 " >> /etc/fstab'`简化了[How do you add swap to an EC2 instance?](http://stackoverflow.com/questions/17173972/how-do-you-add-swap-to-an-ec2-instance)中阐述の`vim /etc/fstab`后手动修改设置。
   
   **注明：**
   
@@ -242,19 +251,21 @@ enabled=1
   那么，现在我们就可以开始安装devtools程序包了哦！（安装过程可能大约需要好几分钟时间）
 
 ```{}
-[yugawa@xueqing ~]$ su - -c "R -e \"install.packages('devtools', dep=TRUE, repos='https://cran.rstudio.com/')\""
+[yugawa@xueqing ~]$ su - -c "R -e \"install.packages('devtools', repos='https://cran.rstudio.com/')\""
 ```
   
-  您可能奇怪为啥不直接通过后台运行R后进入R软件平台`install.packages('devtools', dep=TRUE, repos='http://cran.rstudio.com/')`安装，然后`q('no')`退出R平台回到Linux后台呢？
+  您可能奇怪为啥不直接通过后台运行R后进入R软件平台`install.packages('devtools', repos='http://cran.rstudio.com/')`安装，然后`q('no')`退出R平台回到Linux后台呢？
   
 ![*figure-2.2.1 : packages path*](figure/packages-path.jpg)
   
   原因是通过后台运行`su - -c "R -e \"...\""`，您所安装の所有程序包都与用户root一样，将储存在`r .libPaths()[2]`共享并不会出现在`r .libPaths()[1]`。  倘若您登入个别账户，比方说是登入用户yugawa后才`install.packages()`安装の话，该程序包都将只储存在`r .libPaths()[1]`只能该用户个人使用而已而非共用，而®Studio服务器平台内右下格子的**Packages**标签下の程序包将位于User Library而非System Library，请参考以下数据表：
   
-```{r table-2.2.1, echo=FALSE, results='asis'}
-data_frame('R 程序包路径'=.libPaths(), '®Studio'=c('只会出现在电脑版','电脑板と服务器版','电脑板と服务器版'), '特征'=c('只有登入个别电脑才能读取程序包','只要是同一个服务器下の用户都能读取程序包','只要是同一个服务器下の用户都能读取程序包'), '分别'=c('安装在每一台电脑の程序包都是独立体','安装在每个用户下の程序包都是独立体','安装在每个用户下の程序包都是共同体'), '备注'=c('修改该路径中の文件，只有该电脑受到影响','修改该路径中の文件，只有该用户受到影响','修改该路径中の文件，所有用户都受到影响')) %>% kable
-```
-  
+| R程序包路径         |            ®Studio |                                     特征 |                               分别 |                                   备注 |
+|:--------------------|--------------------|------------------------------------------|------------------------------------|---------------------------------------:|
+| `r .libPaths()[1]`  |   只会出现在电脑版 |           只有登入个别电脑才能读取程序包 | 安装在每一台电脑の程序包都是独立体 | 修改该路径中の文件，只有该电脑受到影响 |
+| `r .libPaths()[2]`  |   电脑板和服务器版 | 只要是同一个服务器下の用户都能读取程序包 | 安装在每个用户下の程序包都是独立体 | 修改该路径中の文件，只有该用户受到影响 |
+| `r .libPaths()[3]`  |   电脑板和服务器版 | 只要是同一个服务器下の用户都能读取程序包 | 安装在每个用户下の程序包都是共同体 | 修改该路径中の文件，所有用户都受到影响 |
+
 *table-2.2.1 : comparison of R packages path*
   
   更多详情可以参阅[Where to install R packages on Linux server that are to be used by multiple users?](http://stackoverflow.com/questions/30809544/where-to-install-r-packages-on-linux-server-that-are-to-be-used-by-multiple-user)以了解更多有关服务器共享程序包の资讯。
@@ -269,17 +280,13 @@ data_frame('R 程序包路径'=.libPaths(), '®Studio'=c('只会出现在电脑�
   您目前可以尝试安装一些与编写rmarkdown网页と数据分析基本所需の程序包。
   
 ```{}
-[yugawa@xueqing ~]$ su - -c "R -e \"pkgs <- c('plyr', 'dplyr', 'stringr', 'purrr', 'magrittr', 'doParallel', 'reshape2', 'tidyr', 'googleVis', 'markdown', 'rmarkdown', 'DT', 'lubridate', 'sqldf', 'checkpoint'); devtools::install_github('berndbischl/BBmisc'); library('BBmisc'); lib(pkgs)\""
+[yugawa@xueqing ~]$ su - -c "R -e \"pkgs <- c('plyr', 'dplyr', 'stringr', 'purrr', 'magrittr', 'doParallel', 'reshape2', 'tidyr', 'googleVis', 'markdown', 'rmarkdown', 'DT', 'lubridate', 'sqldf', 'checkpoint'); devtools::install_github('berndbischl/BBmisc'); library('BBmisc'); lapply(pkgs, install.packages, repos='https://cran.rstudio.com'); lib(pkgs)\""
 ```
   
-  倘若以上代码无法成功安装程序包の话，原因应该是`BBmisc::lib()`没有设置默认の安装路径而导致出现/usr/lib64/R/library相关の错误信息，可以尝试以下命令代码。
-
-```{}
-[yugawa@xueqing ~]$ su - -c "R -e \"pkgs <- c('plyr', 'dplyr', 'stringr', 'purrr', 'magrittr', 'doParallel', 'reshape2', 'tidyr', 'googleVis', 'markdown', 'rmarkdown', 'DT', 'lubridate', 'sqldf', 'checkpoint'); devtools::install_github('berndbischl/BBmisc'); library('BBmisc'); lapply(pkgs, install.packages, dep=TRUE, repos='https://cran.rstudio.com'); lib(pkgs)\""
-```
+    经常使用BBmisc,是为了一次性使用`lib()`安装并读取多个程序包（不过在后台出现/usr/libx64/library路径问题），方便一览安装程序包是否成功（尤其是在安装十几个程序包时，系统不会自动总结您安装成功失败）。`lib()`最大の优点就是会自动读取您输入の程序包，若尚未安装会自动帮您安装后读取。
   
   您也可以先安装[Rdym](https://github.com/wrathematics/Rdym)と[checkpoint](https://cran.r-project.org/web/packages/checkpoint/vignettes/checkpoint.html)两个程序包，以方便您日后编程。
-
+  
 ```{}
 [yugawa@xueqing ~]$ su - -c "R -e \"devtools::install_github('wrathematics/Rdym')\""
 ```
@@ -297,13 +304,28 @@ data_frame('R 程序包路径'=.libPaths(), '®Studio'=c('只会出现在电脑�
 [yugawa@xueqing ~]$ sudo yum update -y
 ```
   
-  ®Studio服务器の默认端口为:8787，所以目前您需要登入<http://46.101.160.242:8787>（您在DO所建立のDropletのip地址）。
+  ®Studio服务器の默认端口为:8787，所以目前您需要登入<http://46.101.160.242:8787>（您在DO所建立のDropletのip地址）。（这代码`--nogpgcheck`代表已经过官方验证，是个可以安全使用の软件）
 
 ![*figure-2.3.1 : ®Studio server mainpage*](figure/rstudio-server-login-mainpage.gif)
 
   当您看到以上页面の时候，代表您の®Studio服务器已经成功安装了！然后您可以使用您在该ipのDroplet中所建立の用户yugawaと密码登入。稍后の[第3.章 : CentOS 7用户账户配置]将讲解如何添加与删除用户，以及赋权等。
   
   那现在就直接在®Studio服务器の登入页面输入用户名yugawa以及密码尝试登入，然后再把刚才下载のrstudio-server-rhel-0.99.849-x86_64.rpm安装器删除掉。
+
+#### ®Studio服务器设置
+
+  建立好®Studio服务器之后，目前您已可以通过以下代码，自行**启动**、**停止**或者**重启**您自个儿建立の®Studio服务器。
+
+```{}
+[yugawa@xueqing ~]$ sudo rstudio-server stop
+[yugawa@xueqing ~]$ sudo rstudio-server start
+[yugawa@xueqing ~]$ sudo rstudio-server restart
+```
+
+  您亦可登入后台修改设置，®Studio原本是没有任何默认の控件文件，不过您可以添加/etc/rstudio/rserver.confと/etc/rstudio/rsession.conf两个控件文件。有关更多详情，请参阅以下文章：
+
+  * [RStudio Server: Managing the Server](https://support.rstudio.com/hc/en-us/articles/200532327-Managing-the-Server)
+  * [RStudio Server: Configuring the Server](https://support.rstudio.com/hc/en-us/articles/200552316-Configuring-the-Server)
 
 #### 自动读取程序包
   
@@ -342,7 +364,7 @@ suppressMessages(source('function/libs.R'))
   设置好®Studio服务器，目前您可以运行以下代码安装shiny程序包，倘若是开发版程序包则`su - -c "R -e \"devtools::install_github('rstudio/shiny')\""`。
 
 ```{}
-[yugawa@xueqing ~]$ su - -c "R -e \"install.packages('shiny', dep=TRUE, repos='http://cran.rstudio.com/')\""
+[yugawa@xueqing ~]$ su - -c "R -e \"install.packages('shiny', repos='https://cran.rstudio.com/')\""
 ```
 
   接着到®Studio官方网の[Shiny服务器下载](https://www.rstudio.com/products/shiny/download-server/)拷贝安装器网址，通过运行以下代码下载并安装。
@@ -373,14 +395,19 @@ suppressMessages(source('function/libs.R'))
 ```{}
 [yugawa@xueqing ~]$ sudo groupadd shiny-apps
 [yugawa@xueqing ~]$ sudo usermod -aG shiny-apps yugawa
-[yugawa@xueqing ~]$ sudo usermod -aG shiny-apps kuribayashi
+[yugawa@xueqing ~]$ sudo useradd -G shiny-apps kuribayashi
+[yugawa@xueqing ~]$ sudo passwd kuribayashi
 [yugawa@xueqing ~]$ cd /srv/shiny-server
 [yugawa@xueqing ~]$ sudo chown -R yugawa:shiny-apps .
 [yugawa@xueqing ~]$ sudo chmod g+w .
 [yugawa@xueqing ~]$ sudo chmod g+s .
 ```
 
-  通过执行以上命令代码，目前用户yugawaとkuribayashi俩都加入了shiny-apps组，并且授权读と写/srv/shiny-server下の文件，那么用户yugawaとkuribayashi都可以登入®Studio服务器后，通过连接Shiny服务器而随意新建Shiny应用了。
+  通过执行以上命令代码，目前用户yugawaと新建用户kuribayashi俩都加入了shiny-apps组，并且授权读と写/srv/shiny-server下の文件，那么用户yugawaとkuribayashi都可以登入®Studio服务器后，通过连接Shiny服务器而随意新建Shiny应用了。
+  
+#### Shiny完整手册
+
+  您可以直接阅读官方[Shiny Server Professional v1.4.0 Administrator's Guide](http://rstudio.github.io/shiny-server/latest/)手册，以掌握Shiny服务器。
   
   基本上，从一开始到阅读完第二章，您の**私家**两台服务器------®Studio服务器とShiny服务器都已经竣工。用户可以随时登入使用了！接下来就介绍一下CentOS 7后台操作。
 
@@ -398,15 +425,17 @@ suppressMessages(source('function/libs.R'))
   * [第3.5章 : 用户安全配置]
     * [A. 设置sudoers]
     * [B. 权限代号4755、755と777]
-  
+    * [C. 实例]
 
 ### 第3.1章 : 认识用户
   
-  此章讲解[CentOS 7](https://wiki.centos.org/Manuals/ReleaseNotes/CentOS7.1406/Japanese?highlight=%28%28Manuals%7CReleaseNotes%7CCentOS7%29%29)（您可以在CentOS 7发行手册中自选语言）用户账户の配置，包括添加用户、添加用户组、删除用户、删除用户组等。其中包括分析用户の配置文件、目录以及对安全の思考。倘若您想要学习CentOS操作系统，欢迎加入[CentOS中文网](http://www.centoscn.com/image-text/)与同道中人交流。
+  此章讲解[CentOS 7](https://wiki.centos.org/Manuals/ReleaseNotes/CentOS7.1406/Japanese?highlight=%28%28Manuals%7CReleaseNotes%7CCentOS7%29%29)（您可以在CentOS 7发行手册中自选语言）用户账户の配置，包括添加用户、添加用户组、删除用户、删除用户组等。其中包括分析用户の配置文件、目录以及对安全の思考。
+  
+  倘若您想要学习CentOS操作系统，欢迎加入[CentOS中文网](http://www.centoscn.com/image-text/)与同道中人交流。您也可以参阅[**Linux命令大全**](http://man.linuxde.net)以掌握Linux操作系统。
   
   此外，CentOS 7と其他版本のLinux一样，都具有相应用户の配置文件及目录，如下：
 
-| **文件配置**           |                                                **叙述** |
+| 文件配置               |                                                    叙述 |
 |:-----------------------|--------------------------------------------------------:|
 | /etc/passwd            |                          用户账户信息，可以看出用户名称 |
 | /etc/shadow            |     用户账户加密后信息，包括但不限于/etc/passwd中の信息 |
@@ -417,6 +446,12 @@ suppressMessages(source('function/libs.R'))
 | /etc/login.defs        |      安全性の默认配置，与上面/etc/default/useradd有区别 |
 
 *table-3.1.1 : user management files' path*
+
+  首先，添加用户可以使用`adduser`或者`useradd`，请参阅以下链接以了解更多详情。
+
+  * [Centos与Ubuntu下的useradd与adduser比较](http://os.51cto.com/art/201208/354693.htm)
+  * [useradd 和 adduser 区别](http://blog.csdn.net/shift_wwx/article/details/42004955)
+  * [useradd 和adduser的区别及用法](http://blog.csdn.net/hzn407487204/article/details/5214234)
 
   我们先`sudo vim /etc/default/useradd`查看一下比较重要の配置文件，内容如下：
   
@@ -470,16 +505,16 @@ ENCRYPT_METHOD SHA512
   
   从以上文件内容可见，/etc/login.defs是比较宏观の进行偏重安全方面の配置。下面是一些实际过程中常用の命令：
   
-| **命令代码**  |                       **叙述** |
-|:--------------|-------------------------------:|
-| useradd       |                       添加用户 |
-| passwd        |                 为用户设置密码 |
-| userdel       |                       删除用户 |
-| usermod       |                   修改用户信息 |
-| groupadd      |                     添加用户组 |
-| groupdel      |                     删除用户组 |
-| groupmod      |                 修改用户组信息 |
-| groups        |   显示当前进程用户所属の用户组 |
+| 命令代码    |                           叙述 |
+|:------------|-------------------------------:|
+| useradd     |                       添加用户 |
+| passwd      |                 为用户设置密码 |
+| userdel     |                       删除用户 |
+| usermod     |                   修改用户信息 |
+| groupadd    |                     添加用户组 |
+| groupdel    |                     删除用户组 |
+| groupmod    |                 修改用户组信息 |
+| groups      |   显示当前进程用户所属の用户组 |
 
 *table-3.1.2 : user management command code*
 
@@ -526,10 +561,10 @@ uid=1000(test)  gid=1000(test)  groups=1000(test)
 
   上个例子我们采用默认配置，只是设置了用户名と密码。这次我们手动设置uid、gid等。首先我们看一下，`useradd`の参数如下：
 
-| **命令代码** |       **涵义**            |                                     **叙述** |
+| 命令代码     | 涵义                      |                                         叙述 |
 |:-------------|---------------------------|---------------------------------------------:|
 | `-b`         | --base-dir BASE_DIR       |                       新账户の主目录の基目录 |
-| `-c`         | --comment COMMENT         |                           新账户の GECOS字段 |
+| `-c`         | --comment COMMENT         |                            新账户のGECOS字段 |
 | `-d`         | --home-dir HOME_DIR       |                               新账户の主目录 |
 | `-D`         | --defaults                |                显示或更改默认の`useradd`配置 |
 | `-e`         | --expiredate EXPIRE_DATE  |                             新账户の过期日期 |
@@ -552,7 +587,7 @@ uid=1000(test)  gid=1000(test)  groups=1000(test)
 | `-U`         | --user-group              |                           创建与用户同名の组 |
 | `-Z`         | --selinux-user SEUSER     |              为SELinux用户映射使用指定SEUSER |
 
-*table-3.1.2 : adduser parameters*
+*table-3.2.1 : useradd parameters*
 
   我们尝试新建个gid=600の用户组test3，然后再新建个uid=501，gid=600，30天有效期の用户test4，而文件目录为/home/test5，命令代码如下：
   
@@ -580,30 +615,40 @@ uid=1000(test)  gid=1000(test)  groups=1000(test)
   - 倘若您使用用户rootの时候，可以省略掉`sudo`，而非用户root则得添加个`sudo`，以下举例比较一下：
   
 ```{}
-[root@xueqing ~]# useradd test6       \\ row1, works
-[root@xueqing ~]# sudo useradd test6  \\ row2, works
-[test@xueqing ~]$ useradd test6       \\ row3, permission error
-[test@xueqing ~]$ sudo useradd test6  \\ row4, works
+[root@xueqing ~]# useradd test6       \\ 新建用户
+[root@xueqing ~]# sudo useradd test6  \\ 新建用户
+[test@xueqing ~]$ useradd test6       \\ 新建用户失败，权限问题
+[test@xueqing ~]$ sudo useradd test6  \\ 新建用户
 ```
+
+  **注明**：以上的执行代码后添加の`\\ ...`，只是注释而已，执行命令代码时无需输入。
 
 #### C. 实例
 
   **实例1:**
   
-  好！我们再查看一下我们の服务器究竟有啥用户。
+  * 尝试新建用户。
   
 ```{}
 [root@xueqing ~]# useradd kuribayashi
 [root@xueqing ~]# passwd kuribayashi
 ```
   
-  接着，您可以`id kuribayashi`以查看用户信息，如下：
+  * 接着，您可以`id kuribayashi`查看个别用户のidと用户组id资料，如下：
   
 ![*figure-3.2.2 : create user*](figure/create-user.jpg)
 
+  * 倘若您想要查询系统上の所有用户资料。
+  
+```{}
+[root@xueqing ~]# cat /etc/passwd
+```
+  
 ![*figure-3.2.3 : list users*](figure/list-users.jpg)
-
-![*figure-3.2.4 : check users details*](figure/check-users-details.jpg)
+  
+  * 然后，如果您想要查询系统上所有用户のidと用户组id资料，只能`ls -l /home`后再一一查询。
+  
+![*figure-3.2.4 : check user details*](figure/check-user-details.jpg)
 
   **实例2:**
   
@@ -612,28 +657,69 @@ uid=1000(test)  gid=1000(test)  groups=1000(test)
 ```{}  
 [root@xueqing ~]# useradd oracle -g oinstall -G dba
 ```
-
-  从以上命令代码中，您可能感觉非常诧异，为什么 g と G 这两个参数会同时存在呢？而`useradd`命令用到の主要参数如下：
   
-| **命令代码** |       **涵义**     |                                                            **叙述** |
-|:-------------|--------------------|--------------------------------------------------------------------:|
-| `-c`         |  comment           |                                                 指定一段注释性描述。|
-| `-d`         |  目录              |   指定用户主目录，如果此目录不存在，则同时使用-m选项，能创建主目录。|
-| `-g`         |  用户组            |                                               指定用户所属の用户组。|
-| `-G`         |  用户组，用户组    |                                               指定用户所属の附加组。|
-| `-s`         |  Shell文件         |                                                指定用户登录のShell。|
-| `-u`         |  用户号            | 指定用户の用户号，如果同时有`-o`选项，则能重复使用其他用户の标识号。|
-  
-  通过上面の解释我们目前能清晰の知道，上面那个命令の具体意思是，新建个用户oracle，这初始属于oinstall组，且同时让他也属于dba组。
+  从以上命令代码中，您可能感觉非常诧异，为什么gとG这两个参数会同时存在呢？而`useradd`命令用到の主要参数，请参考*table-3.1.2 : adduser parameters*。通过该图表の解释我们目前能清晰の知道，上面那个命令の具体意思是，新建个用户oracle，这初始属于oinstall组，且同时让他也属于dba组。
 
 
 ### 第3.3章 : 更改用户设置
-
-  您可以添加个新の用户组，然后将该用户组赋权，才来分配用户，那么只要是在该用户组の用户都能享有同样の权限。我们就尝试修改一下用户组test3の权限呗！
+  
+  usermod命令用于修改用户の基本信息。usermod命令不允许你改变正在线上の使用者帐号名称。当usermod命令用来改变user id，必须确认这名user没在电脑上执行任何程序。你需手动更改使用者のcrontab档。也需手动更改使用者のat工作档，采用NIS server须在server上更动相关のNIS设定。
+  
+  **注明**：以下所有执行代码后添加の`\\ ...`，只是注释而已，执行命令代码时无需输入。
   
 ```{}
-[root@xueqing ~]# test3
+[root@xueqing ~]# usermod         \\一样可以查询到usermod中の参数
+[root@xueqing ~]# usermod --help  \\一样可以查询到usermod中の参数
 ```
+  
+![*figure-3.3.1 : modify user details' parameters*](figure/usermod-help.jpg)
+
+  参考了以上の参数后，现在就举例如下：
+  
+  * 将用户kuribayashi添加到组shiny-apps中：`[root@xueqing ~]# usermod -G shiny-apps kuribayashi`
+  
+```{}
+[root@xueqing ~]# id kuribayshi                     \\先查询用户kuribayashi加入什么用户组
+[root@xueqing ~]# usermod -G shiny-apps kuribayashi \\把用户kuribayashi加入shiny-apps用户组
+[root@xueqing ~]# id kuribayshi                     \\再次查询用户kuribayashi加入什么用户组
+```
+  
+![*figure-3.3.2 : add user into a group*](figure/usermod-G.jpg)
+  
+  * 修改kuribayashiの用户名为kuribayashi1：`[root@xueqing ~]# usermod -l kuribayashi1 kuribayashi`
+  
+```{}
+[root@xueqing ~]# id kuribayashi                      \\先查询用户kuribayashi知否存在
+[root@xueqing ~]# usermod -l kuribayashi1 kuribayashi \\更换用户名
+[root@xueqing ~]# id kuribayashi                      \\再查询用户kuribayashi知否存在
+[root@xueqing ~]# id kuribayashi1                     \\先查询用户kuribayashi1知否存在
+```
+
+![*figure-3.3.3 : change username*](figure/usermod-l.jpg)
+  
+  * 锁定账号kuribayashi1：`[root@xueqing ~]# usermod -L kuribayashi1`
+  * 解除对kuribayashi1の锁定：`[root@xueqing ~]# usermod -U kuribayashi1`
+  
+```{}
+[root@xueqing ~]# usermod -L kuribayashi1       \\封锁账号
+[root@xueqing ~]# grep kuribayashi1 /etc/shadow \\查询账户（密码）状况
+[root@xueqing ~]# usermod -U kuribayashi1       \\解除封锁
+[root@xueqing ~]# grep kuribayashi1 /etc/shadow \\查询账户（密码）状况
+```
+
+![*figure-3.3.3 : lock user account*](figure/usermod-L-U.jpg)
+  
+  一般上所有用户密码都储存在/etc/shadow，而`id kuribayashi1`只能查询用户和用户组俩のid。您可以`vim /etc/shadow`自行修改文件（不过您得了解密码学）。像上图中显示`kuribayashi1:!$...`中的感叹号**!**代表账号已经嵌入密码但被封锁了。倘若是两个感叹号**!!**代表尚未设置密码。
+
+  * 查询kuribayashi1の账户是否被封锁：`[root@xueqing ~]# passwd -S kuribayashi1`
+  
+```{}
+[root@xueqing ~]# passwd -S kuribayashi1  \\figure-3.3.3 : lock user account，已经解除封锁，所以直接查询账户（密码）状况
+[root@xueqing ~]# usermod -L kuribayashi1 \\封锁账号
+[root@xueqing ~]# passwd -S kuribayashi1  \\再次查询账户（密码）状况
+```
+  
+![*figure-3.3.4 : check user account status*](figure/passwd-S.jpg)
   
   不同の用户需要不同の权限，拥有不同のSHELL，是否允许登录。这个部分，就需要用到`usermod`命令修改用户配置。我们上个例子中创建过一个test账户，默认SHELL是/bin/bash，是可以登录の。
 
@@ -645,19 +731,11 @@ uid=1000(test)  gid=1000(test)  groups=1000(test)
 ```
 </s>
 
-`-l 新の用户名`，修改用户test用户名：
-
-<s>
-```{}
-[root@xueqing ~]# usermod -l test88 test
-```
-</s>
-
   此外还可以添加目录、过期天数、更换组、锁定用户、解锁用户等功能，可以查看参数实践。
   
   **注明：**
   
-  有关[第3.3章 : 更改用户设置]，暂时先参阅以下文章：
+  更多详情，参阅以下文章：
   
   * [Linux修改文件の拥有者及组](http://blog.163.com/yanenshun@126/blog/static/128388169201203011157308/)
   * [Linux学习笔记：用户管理と权限控制](http://blog.csdn.net/boybruce/article/details/17198601)
@@ -678,15 +756,15 @@ useradd: warning: the home directory already exists.
 Not copyingfile from skel directory  t.
 Creating mailbox file: File exists
 ```
-
+  
   出现这个问题是因为我们删除用户时，系统为了安全起见并没有删除相关の文件以及目录。我们查看一下`userdel`参数：
   
 ![*figure-3.4.1 : delete user*](figure/userdel.jpg)
-
+  
   在这种情况之下，我们可以使用参数-rf一并删除相关文件目录，那么就可以重新添加个全新且同名の用户了。
 
 ![*figure-3.4.2 : force delete user*](figure/force-userdel.jpg)
-
+  
   再举例上图中の用户test正在进程13378中导致无法删除，然后使用正则表达式`grep`（[Log out a user and delete the account](http://unix.stackexchange.com/questions/145681/log-out-a-user-and-delete-the-account)）该用户の所有进程，然后`killall`格杀勿论且一网打尽。
   
 ```{}
@@ -709,7 +787,7 @@ Creating mailbox file: File exists
   那么现在，我们新建个用户test1然后输入`su - test1`转换成用户test1，接着随意输入`sudo yum update -y`命令时，会提示sudoers问题如下：
 
 ![*figure-3.5.1 : user is not sudoers*](figure/not-sudoers.jpg)
-
+  
   解决这个问题，我们只需要`su -`转换回用户root后`visudo`，然后在/etc/sudoers文件中添加用户test1即可（可参照[第1.2章 : 选择网络服务器]），代码如下：
   
 ```{}
@@ -720,13 +798,13 @@ test1   ALL=(ALL)   ALL   //这一行是添加の
 ```
 
 ![*figure-3.5.2 : add as sudoers*](figure/add-sudoers.gif)
-
-  点击键盘上のEsc后`:wq`=储存并退出后（`:q!`=不储存而退出）。一般上您您`visudo`后添加就能使用`sudo`了，倘若您想要添加到sudo组の话，可以`gpasswd -a test1 sudo`如下：
+  
+  点击键盘上のEsc后`:wq`（不行就`:wq!`）=储存并退出后（`:q!`=不储存而退出）。一般上您您`visudo`后添加就能使用`sudo`了，倘若您想要添加到sudo组の话，可以`gpasswd -a test1 sudo`如下：
   
 ![*figure-3.5.3 : visudo user*](figure/visudo-user.jpg)
   
   然后`getent group sudo`查看sudo组有哪些用户。而修改文件/usr/bin/sudo用户及用户组，并修改权限为代号4755，其中开头数字4代表**以文件所有者执行**(`run_as root`)：
-
+  
 ```{}
 [root@xueqing ~]# su - test1
 [test1@xueqing ~]$ sudo chown root：root /usr/bin/sudo
@@ -751,13 +829,13 @@ test1   ALL=(ALL)   ALL   //这一行是添加の
   * 第二个数字表示与文件所有者同属一个用户组の其他用户の权限
   * 第三个数字表示其它用户组の权限。
   
-  权限分为三种：读（r=4），写（w=2），执行（x=1）。综合起来还有可读可执行（rx=5=4+1）、可读可写（rw=6=4+2）、可读可写可执行(rwx=7=4+2+1)。
+  权限分为三种：读（r = 4），写（w = 2），执行（x = 1）。综合起来还有可读可执行（rx = 5 = 4+1）、可读可写（rw = 6 = 4+2）、可读可写可执行(rwx = 7 = 4+2+1)。
   
   以此类推，**chmod 755**设置用户の权限为：
   
-  * 文件所有者可读可写可执行(rwx=7=4+2+1)
-  * 与文件所有者同属一个用户组の其他用户可读可执行（rx=5=4+1）
-  * 其它用户组可读可执行（rx=5=4+1）
+  * 文件所有者可读可写可执行(rwx = 7 = 4+2+1)
+  * 与文件所有者同属一个用户组の其他用户可读可执行（rx = 5 = 4+1）
+  * 其它用户组可读可执行（rx = 5 = 4+1）
   
   **chmod 4755**与chmod 755の区别在于开头多了一位，这个4表示其他用户执行文件时，具有与所有者相当の权限。例如：用户root创建了一个上网认证程序netlogin，如果其他用户要上网也要用到这个程序，那就需要用户root运行`chmod 755 netlogin`命令（**注明**：倘若您使用用户rootの时候，可以省略掉`sudo`，而非用户root则得添加个`sudo`。）使其他用户也能运行netlogin。
   
@@ -774,49 +852,52 @@ test1   ALL=(ALL)   ALL   //这一行是添加の
 [root@xueqing ~]# chmod 777 --help
 ```
   
-![*figure-3.5.6 : chmod-help*](figure/chmod-help.jpg)
+![*figure-3.5.6 : chmod parameters*](figure/chmod-help.jpg)
   
-指令名称 : chmod
-使用权限 : 所有使用者
-使用方式 : chmod [-cfvR] [--help] [--version] mode file...
-说明 : Linux/Unixの档案存取权限分为三级 : 档案拥有者、群组、其他。利用chmod可以藉以控制档案如何被他人所存取。
+  * 指令名称：chmod
+  * 使用权限：所有使用者
+  * 使用方式：chmod [-cfvR] [--help] [--version] mode file...
+  * 说明：Linux/Unixの档案存取权限分为三级：档案拥有者、群组、其他。利用chmod可以藉以控制档案如何被他人所存取。
 
-参数格式 :
+| 参数格式      |                                                                                                       叙述 |
+|:--------------|-----------------------------------------------------------------------------------------------------------:|
+| `mode`        |                                                    权限设定字串，格式如下：[ugoa...][[+-=][rwxX]...][,...] |
+| `u`           |       表示该档案的拥有者，g表示与该档案的拥有者属于同一个群体(group)者，o表示其他以外的人，a表示这三者皆是 |
+| `+`           |                                                             表示增加权限、-表示取消权限、=表示唯一设定权限 |
+| `r`           |            表示可读取，w表示可写入，x表示可执行，X表示只有当该档案是个子目录或者该档案已经被设定过为可执行 |
+| `-c`          |                                                                 若该档案权限确实已经更改，才显示其更改动作 |
+| `-f`          |                                                                   若该档案权限无法被更改也不要显示错误讯息 |
+| `-v`          |                                                                                     显示权限变更的详细资料 |
+| `-R`          |                                   对目前目录下的所有档案与子目录进行相同的权限变更(即以递回的方式逐个变更) |
+| `--help`      |                                                                                               显示辅助说明 |
+| `--version`   |                                                                                                   显示版本 |
 
-mode : 权限设定字串，格式如下 : [ugoa...][[+-=][rwxX]...][,...]，其中
+#### C. 实例
+  
+  **实例1:**
 
-u : 表示该档案的拥有者，g 表示与该档案的拥有者属于同一个群体(group)者，o 表示其他以外的人，a 表示这三者皆是。
-+ :  表示增加权限、- 表示取消权限、= 表示唯一设定权限。
-r : 表示可读取，w 表示可写入，x 表示可执行，X 表示只有当该档案是个子目录或者该档案已经被设定过为可执行。
--c : 若该档案权限确实已经更改，才显示其更改动作
--f : 若该档案权限无法被更改也不要显示错误讯息
--v : 显示权限变更的详细资料
--R : 对目前目录下的所有档案与子目录进行相同的权限变更(即以递回的方式逐个变更)
---help : 显示辅助说明
---version : 显示版本
-范例 :将档案 file1.txt 设为所有人皆可读取 :
-chmod ugo+r file1.txt
-将档案 file1.txt 设为所有人皆可读取 :
-chmod a+r file1.txt
-将档案 file1.txt 与 file2.txt 设为该档案拥有者，与其所属同一个群体者可写入，但其他以外的人则不可写入 :
-chmod ug+w,o-w file1.txt file2.txt
-将 ex1.py 设定为只有该档案拥有者可以执行 :
-chmod u+x ex1.py
-将目前目录下的所有档案与子目录皆设为任何人可读取 :
-chmod -R a+r *
-此外chmod也可以用数字来表示权限如 chmod 777 file
-语法为：chmod abc file
-其中a,b,c各为一个数字，分别表示User、Group、及Other的权限。
-r=4，w=2，x=1
-若要rwx属性则4+2+1=7；
-若要rw-属性则4+2=6；
-若要r-x属性则4+1=7。
-范例：
-chmod a=rwx file 和chmod 777 file效果相同
-chmod ug=rwx,o=x file和chmod 771 file效果相同
-若用chmod 4755 filename可使此程式具有root的权限
-
-  那目前再查看回刚才の*figure-3.5.5 : chown sudoers*，就能明白图中の权限の含义了：
+  * 将档案 file1.txt 设为所有人皆可读取：`[root@xueqing ~]# chmod ugo+r file1.txt`
+  * 将档案 file1.txt 设为所有人皆可读取：`[root@xueqing ~]# chmod a+r file1.txt]`
+  * 将档案 file1.txt と file2.txt 设为该档案拥有者，与其所属同一个群体者可写入，但其他以外の人则不可写入：`[root@xueqing ~]# chmod ug+w,o-w file1.txt file2.txt`
+  * 将ex1.py设定为只有该档案拥有者可以执行：`[root@xueqing ~]# chmod u+x ex1.py`
+  * 将目前目录下の所有档案与子目录皆设为任何人可读取：`[root@xueqing ~]# chmod -R a+r *`
+  * 此外chmod也可以用数字来表示权限如`[root@xueqing ~]# chmod 777 file`
+  * 语法为：`[root@xueqing ~]# chmod abc file`
+  
+  其中a,b,c各为一个数字，分别表示User、GroupとOtherの权限。
+  
+  * r = 4，w = 2，x = 1
+  * 若要 rwx 属性则 4+2+1 = 7；
+  * 若要 rw- 属性则 4+2   = 6；
+  * 若要 r-x 属性则 4+1   = 7。
+  
+  **实例2:**
+  
+  * `[root@xueqing ~]# chmod a=rwx file`と`[root@xueqing ~]# chmod 777 file`效果相同
+  * `[root@xueqing ~]# chmod ug=rwx,o=x file`と`[root@xueqing ~]# chmod 771 file`效果相同
+  * 若用`[root@xueqing ~]# chmod 4755 filename`可使此程式具有用户rootの权限
+  
+  那目前再查看回刚才の*figure-3.5.5 : chown sudoers*，就能明白图中の权限含义了：
 
 ```{}
 [root@xueqing ~]# ls -l /usr/bin/sudo
@@ -825,26 +906,22 @@ chmod ug=rwx,o=x file和chmod 771 file效果相同
 -rwxr-xr-x  1 root  root  130720  Nov 20  15:16 /usr/bin/sudo \\chmod 755后の权限
 -rwxrwxrwx  1 root  root  130720  Nov 20  15:16 /usr/bin/sudo \\chmod 777后の权限
 ```
-
-  您可以参阅以下两篇文章，以了解更多详情：
-
+  
+  **注明**：以上的执行代码后添加の`\\ ...`，只是注释而已，执行命令代码时无需输入。您可以参阅以下两篇文章，以了解更多有关权限代号详情：
+  
   * [Linux chmod 755/777/4755](http://blog.csdn.net/ld513508088/article/details/8362506)
   * [chmod 命令——chmod 755与 chmod 4755, chmod 777区别](http://blog.sina.com.cn/s/blog_5da93c8f0101j5c7.html)
 
+  在实际环境中，为了防止黑客对用户root进行暴力破解，我们通常禁止root账户SSH远程连接。操作如下：
 
-在实际环境中，为了防止黑客对用户root进行暴力破解，我们通常禁止root账户SSH远程连接。操作如下：
-
-```{}
-//修改 /etc/ssh/sshd.config 文件，
-将
-#PermitRootLogin yes
-修改为
-PermitRootLogin no
-
-//重启sshd服务
-systemctl restart sshd.service
-```
-
+  * `[root@xueqing ~]# vim /etc/ssh/sshd_config`修改文件
+  * 寻找文件中の`#PermitRootLogin yes`，将它修改成`PermitRootLogin no`
+  * `[root@xueqing ~]# systemctl restart sshd.service`重启sshd服务
+  
+![*figure-3.5.7 : ssh permit root login*](figure/sshd-permitRootLogin.jpg)
+  
+  当您修改设置后，尝试打开PuTTY或者任何ssh工具登入，您将看到以上登入错误信息。这证明您的设置已经生效，然而您可以随时通过网站上Droplet中的执行命令代码修改回。
+  
   CentOS 7取消了`service`用法，尽管部分情况下还可以使用。`systemctl`是一个`systemd`工具，主要负责控制`systemd`系统と服务管理器。有关更多`systemctl`详情，请参阅：
   
   * [C6.5與C7の一些差異與 systemctl の介紹](http://luyaku.pixnet.net/blog/post/183362281-c6.5%E8%88%87c7%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B7%AE%E7%95%B0%E8%88%87-systemctl-%E7%9A%84%E4%BB%8B%E7%B4%B9)
@@ -857,22 +934,77 @@ systemctl restart sshd.service
 
   * [第4.1章 : GitHub简介]
   * [第4.2章 : 源代码文件管理]
+    * [A. 新建R Markdown网页]
+    * [B. 新建演示文稿网页]
+    * [C. 新建Shiny网络应用]
+    * [D. 新建R程序包]
   * [第4.3章 : 美化网址]
   * [第4.4章 : 范例]
 
 
 ### 第4.1章 : GitHub简介
 
-  提及项目管理，您可以在®Studioの左上角の`File`菜单中选择`New Project`，或者右上角の
+  一般上，程序员都需要有个资源储存库来储存编写好の程序と代码，而著名且多人使用の资源储存库如下：
   
-  倘若您希望管理您のGitHub账户，可以安装个`su - -c "R -e \"devtools::install_github('cscheid/rgithub')\""`。
+  - [GitHub](https://github.com/)
+  - [BitBucket](https://bitbucket.org)
+  - [GitHub**Gist**](https://gist.github.com/)
+  
+  ®Studio软件上拥有GitHubとGit链接功能，用户可以直接通过该统计软件直接上下载并修改编码等，非常方便。
+  
+  至于如何操作，可以直接阅读[Mastering ®Studio Develop Communicate and Collaborate with R](https://englianhu.files.wordpress.com/2015/12/mastering-rstudio-develop-communicate-and-collaborate-with-r.pdf)，书中讲解得非常仔细。
+  
+  倘若您希望管理您のGitHub账户，可以安装个`su - -c "R -e \"devtools::install_github('cscheid/rgithub')\""`。除此之外，您也可以参阅[How To Set Up a Private Git Server on a VPS](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-private-git-server-on-a-vps)，学习建立自己のGit服务器。安装执行命令代码如下：
+
+```{}
+[root@xueqing ~]# yum install -y git
+```
 
 
 ### 第4.2章 : 源代码文件管理
 
+  当我想想要新建个R Markdown文件、程序包、或者shiny app等，都需要有个项目管理以方便管理，您可以在®Studio新建项目。
+
+  至于如何操作，可以直接阅读[Mastering ®Studio Develop Communicate and Collaborate with R](https://englianhu.files.wordpress.com/2015/12/mastering-rstudio-develop-communicate-and-collaborate-with-r.pdf)，书中讲解得非常仔细。
+  
+  倘若您想要确保您の项目独立性，可以使用Pakrat功能，那么您の项目所需要の程序包都将会备份在该项目中。那么官方程序包有何修改更新，都将不会影响到您已下载并储存の程序包了。
+  
+#### A. 新建R Markdown网页
+  
+  mosaic程序包提供了一个R Markdown模板，您可以通过后台`su - -c "R -e \"install.packages('mosaic', repos='https://cran.rstudio.com')\""`安装后使用（安装过程可能需要好几分钟）。
+  
+  * [Project MOSAIC](http://mosaic-web.org/r-packages/)
+  * [Graphics with the mosaic package](https://cran.r-project.org/web/packages/mosaic/vignettes/GraphicsWithMosaic.html)
+  
+  您可以参考以下の两个教程演示图，其中包括新建R Markdownm文件并发帖到®Studio旗下の[RPubs.com](http://rpubs.com/)网站，也有使用mosaic程序包模板演示图。
+  
+  * 以下演示图教导如何新建R Markdown文件并发帖到RPubs。
+  
+![*figure-4.2.1 : rmarkdown sample 1*](figure/rmarkdown_1.gif)
+
+  * 以下演示图教导如何使用R Markdown模板，模板内有嵌入默认程序包和设置，以及文件建立和R版本等信息。
+
+![*figure-4.2.2 : rmarkdown sample 2*](figure/rmarkdown_2.gif)
+  
+#### B. 新建演示文稿网页
+
+  slidify程序包提供了一个演示文稿模板，您可以通过后台安装：
+  
+```{}
+[root@xueqing ~]# su - -c "R -e \"pkgs<-c('slidify','slidifyLibraries'); gpkgs<-paste0('ramnathv/',pkgs); devtools::install_github(gpkgs); BBmisc::lib(pkgs)\""
+```
+  
+  * [Slidify: Modern, simple presentations written in R Markdown](https://benjaminlmoore.wordpress.com/2014/02/24/slidify-presentations-in-r-markdown/)
+  * [Whisker](https://github.com/edwindj/whisker)
+  
+#### C. 新建Shiny网络应用
+  
 
 
-
+#### D. 新建R程序包
+  
+  
+  
 ### 第4.3章 : 美化网址
 
 ```{}
@@ -892,8 +1024,31 @@ sudo service nginx restart
 
 ### 第4.4章 : 范例
 
+```{}
+[root@xueqing ~]# su - -c "R -e \"pkgs <- c('R.basic','playwith','fields'); plyr::l_ply(pkgs, install.packages, repos='https://cran.rstudio.com'); BBmisc::lib(pkgs)\""
+```
+
+```{}
+[root@xueqing ~]# su - -c "R -e \"devtools::install_gihtub('floybix/playwith'); \""
+[root@xueqing ~]# su - -c "R -e \"install.packages(c('R.basic'), contriburl='http://www.braju.com/R/repos/')\""
+```
+
+  您可以安装以下程序包：
+  
+  * [R.basic](http://www.braju.com/R/repos/) - 绘制透视图表
+  * [playwith](https://github.com/floybix/playwith) - 绘制互动式图表
+  * [fields](https://cran.r-project.org/web/packages/fields/index.html) - 绘制世界地图
+  
+  您可以参阅以下例子，建立自己的项目包括报表、网站、程序包等。
+  
+  * [An Introduction to R Markdown - Dynamic Documents for R](http://rpubs.com/mansun_kuo/24330)
   * [R語言の工程面](http://wush978.github.io/REngineering/#1)
   * [ETL on R](http://ntuaha.github.io/R_ETL_LAB/#1)
+  * [Explorable, multi-tabbed reports in R and Shiny](http://tomhopper.me/2016/01/02/multi-tabbed-reports-in-r-and-shiny/)
+  * [Interactive Graphics with ggplot2+gridSVG](http://sachsmc.github.io/UseR2015-Talk/#1)
+  * [D3 gallery](https://github.com/mbostock/d3/wiki/Gallery)
+  * [blogR](https://github.com/blmoore/blogR)
+  * [Playing with the ‘playwith’ package](https://ryouready.wordpress.com/2010/03/23/playing-with-the-playwith-package/)
 
 
 
@@ -907,18 +1062,21 @@ sudo service nginx restart
   
   前阵子阅读了[Mastering ®Studio Develop Communicate and Collaborate with R](https://englianhu.files.wordpress.com/2015/12/mastering-rstudio-develop-communicate-and-collaborate-with-r.pdf)后，觉得该书本内容非常及时（新书2015年刚发行不久の缘故），而且内容非常实用，故此也分享一下该书，很中肯の介绍了如何安装、功能介绍、如何使用®Studio甚至是遇到疑难杂症の时候，可以到哪儿寻找高手求助或者与业界人士交流等。
   
+  以下乃一些与®Studio相关の书籍，有兴趣可以直接打开链接在线阅读或下载：
+  
   * [®Studio 相关书籍](http://www.r-bloggers.com/search/rstudio)
-  * [Reproducible Research with R and ®Studio (2nd Edition)]()
-  * [Dynamic Documents with R and knitr (2nd Edition)]()
-  * [Mastering ®Studio Develop Communicate and Collaborate with R]()
-  * [Computational Statistics using R and ®Studio - An Introduction for Scientists]()
-  * [Using R and ®Studio for Data Management - Statistical Analysis and Graphics (2nd Edition)]()
+  * [Reproducible Research with R and ®Studio (2nd Edition)](https://englianhu.files.wordpress.com/2016/01/reproducible-research-with-r-and-studio-2nd-edition.pdf)
+  * [Dynamic Documents with R and knitr (2nd Edition)](https://github.com/yihui/knitr-book/)
+  * [Mastering ®Studio Develop Communicate and Collaborate with R](https://englianhu.files.wordpress.com/2015/12/mastering-rstudio-develop-communicate-and-collaborate-with-r.pdf)
+  * [Computational Statistics using R and ®Studio - An Introduction for Scientists](https://englianhu.files.wordpress.com/2016/01/computational-statistics-using-r-and-rstudio-an-introduction-for-scientists.pdf)
+  * [Using R and ®Studio for Data Management - Statistical Analysis and Graphics (2nd Edition)](https://englianhu.files.wordpress.com/2016/01/using-r-and-rstudio-for-data-management-statistical-analysis-and-graphics-2nd-edit.pdf)
 
 
 ### 第5.2章 : 统计学とR
 
   * [Statistics with ®Studio and Shiny]()
-  * [i love stats]()
+  * [i love stats](http://www.ilovestats.org/maximum-likelihood/)
+  * [Free statistics e-books for download](http://www.r-statistics.com/2009/10/free-statistics-e-books-for-download/)
 
 
 
@@ -959,7 +1117,7 @@ Sys.info()
   首先呢，在下非常感谢[Dean Attali](http://deanattali.com/aboutme)の参考文献，该作者专研网络服务器と发表多篇相关文章。
   大约半年多未在富士权禄工作之前，由于平时喜欢使用行动电话随时随地可以阅读电子书，机缘巧合之下安装了®Instructor。然后因由版本迟迟未更新并且权限问题，在作者Shidan Murphyの介绍之下开始认识Louis Aslett并使用®Studio AMI，由于月收费超过万元实属离谱。之后机缘巧合认识相较便宜很多のDO，并在[益辉](http://yihui.name/)兄の推荐下，草草略读了Dean Attaliの部落格几天就建了个®Rstudio服务器，不过设置用户权限と美化网址等部份频频遇到故障，跌跌撞撞地就二话不说先着手[Betting-Strategy-and-Model-Validation](https://github.com/Scibrokes/Betting-Strategy-and-Model-Validation)。
   
-  然后[DigitalOcean Tutorials](https://www.digitalocean.com/community/tutorials)提供了一个交流平台，多名DO用户于此分享了许多自身学习并实用の文章。由于时间紧凑，故此一些错误画面，在下暂时就只能姑且睁一只眼闭一只眼带过一些问题。然而之后会录制个视频教程与雪晴数据网の学者们分享。
+  然后[DigitalOcean Tutorials](https://www.digitalocean.com/community/tutorials)提供了一个交流平台，多名DO用户于此分享了许多自身学习并实用の文章。俗语说：**授人以鱼，不如授人以渔**，不过由于时间紧凑，故此教程上录制のgif可能会出现一些错误画面，在下暂时就只能姑且睁一只眼闭一只眼带过一些问题。然而之后会录制个视频教程与雪晴数据网の学者们分享。
   
   由于桌面版®Studio并不方便，在下大约6个月前开始学习如何设置®Studio服务器，也想と学者们分享上个月阅读了[Mastering ®Studio Develop Communicate and Collaborate with R](https://englianhu.files.wordpress.com/2015/12/mastering-rstudio-develop-communicate-and-collaborate-with-r.pdf)。
   
@@ -974,16 +1132,31 @@ Sys.info()
   在此与大伙儿分享幕后の每一分努力，也警惕一下自己**没有最好，只有更好**。
   
   - 本文章中，当一提及新の术语の时候，一般上都有添加可参阅链接，以方便学者可以立刻参考该术语の含义与应用等切确と相关资讯。
-  - 在*figure-1.1.1 : Create Droplet*中注册のxueqing2，是再次测试xueqingと此教程而设。以确保质量管理。不过在下并不担心Scibrokes®の后台ip一览无余，因为都已经做足备份と随时可以修复、搬迁甚至新建新平台。**只求有心人可以参阅本文章后，自行安装私家服务器，别再做些损人不利己の坏事儿了**，阿弥陀佛。
-  - ![测试新建droplet出现の问题](https://englianhu.files.wordpress.com/2016/01/testing.gif)
+  - 在*figure-1.1.1 : Create Droplet*中注册のxueqing2，是再次测试xueqingと此教程而设。以确保质量管理。不过在下并不担心Scibrokes®の后台ip一览无余，因为都已经做足备份と随时可以修复、搬迁甚至新建新平台。
   - 正文中嵌入の代码都会呈现灰色背景颜色，以方便分辨那是可以运行の代码----电脑语言。
   - 您可以发现*figure-2.3.1 : ®Studio server mainpage* 中の.Rhistory时间比下载rstudio-server-rhel-0.99.849-x86_64.rpmの时间较早几分钟时间，那是由于在下事先测试了一下才录制gif文件，却又忘了删除该文件。倘若是首次登入，绝对不会有.Rhistory文件存在。
   - 由于网络服务器系统一般上需要许多用户，故此在下特地参阅并测试了[CentOS 7用户账户配置](http://www.cnblogs.com/zutbaz/p/4248845.html)文章中の代码是否有误。
   - 在一些代码测试运行后却又无法有效实现/呈现应有の效果の问题上，都划上<s>删除横杠符号</s>，以方便它日温习并修正。
   - [第3.4章 : 删除用户/组]以及*figure-3.4.2 : force delete user*省略了设置密码`passwd test2`，因为只是测试删除用户怎么操作。
   - *figure-3.5.4 : setuid root*中出现个没有使用`sudo`错误信息并不与资参考料来源[CentOS 7 用户账户配置](http://www.cnblogs.com/zutbaz/p/4248845.html)一致，所以此教程中多次强调非用户root必须使用`sudo`,运行了才出现该错误信息。（小贴士：所以所有参考资料来源，都必须经过测试と检验，合格了才能使用）
-
-
+  - 
+  - 为了完成个教程而频频受到骇客攻击，也频频新建Droplet（从*figure-3.5.7 : ssh permit root login*到[第4.章 : 项目管理]）。**只求有心人可以参阅本文章后，自行安装私家服务器，别再做些损人不利己の坏事儿了**，阿弥陀佛。
+  
+  **NG镜头**
+  
+  - ![测试新建droplet出现の问题](blooper/create-droplet-error.gif)
+  *测试新建droplet出现の问题*
+  
+  - ![忘了事先安装tex-live程序包导致Beamer.Rmd出现错误信息](blooper/rpresentation.gif)
+  *忘了事先安装tex-live程序包导致Beamer.Rmd出现错误信息*
+  
+  - ![终止了ssh远程操作后，droplet内运行执行代码时无法打空格键（在其它地点上同样的网站却可以）](blooper/space-button-error.gif)
+  *终止了ssh远程操作后，droplet内运行执行代码时无法打空格键（在其它地点上同样的网站却可以）*
+  
+  - ![终止了ssh远程操作后，droplet内运行执行代码时无法打空格键（在其它地点上同样的网站却可以）](blooper/space-button-error2.gif)
+  *终止了ssh远程操作后，droplet内运行执行代码时无法打空格键（在其它地点上同样的网站却可以）*
+  
+  
 ### 第6.3章 : 参考文献
   
   * [Initial Server Setup with CentOS 7](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-centos-7)
@@ -1000,12 +1173,7 @@ Sys.info()
   * [CentOS 7用户账户配置](http://www.cnblogs.com/zutbaz/p/4248845.html)
   * [Linux chmod 755/777/4755](http://blog.csdn.net/ld513508088/article/details/8362506)
   * [chmod 命令——chmod 755与 chmod 4755, chmod 777区别](http://blog.sina.com.cn/s/blog_5da93c8f0101j5c7.html)
-  * [Explorable, multi-tabbed reports in R and Shiny]()
-  * [Reproducible Research with R and ®Studio (2nd Edition)]()
-  * [Dynamic Documents with R and knitr (2nd Edition)]()
-  * [Mastering ®Studio Develop Communicate and Collaborate with R]()
-  * [Computational Statistics using R and ®Studio - An Introduction for Scientists]()
-  * [Using R and ®Studio for Data Management - Statistical Analysis and Graphics (2nd Edition)]()
+  * [Mastering ®Studio Develop Communicate and Collaborate with R](https://englianhu.files.wordpress.com/2015/12/mastering-rstudio-develop-communicate-and-collaborate-with-r.pdf)
   
   
 **Powered by - Copyright© Intellectual Property Rights of <img src='https://avatars0.githubusercontent.com/u/13562894?v=3&s=200' width='24'> [Scibrokes®](http://www.scibrokes.com)個人の経営企業**
