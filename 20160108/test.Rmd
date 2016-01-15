@@ -10,6 +10,8 @@ output:
 
 [46.101.160.242](http://46.101.160.242)
 
+<iframe width="560" height="315" src="http://www.youtube.com/embed/9bZkp7q19f0?rel=0" frameborder="0" allowfullscreen></iframe>
+
 ```{}
 #<img src='figure/rstudio.jpg' width='24'>
 ```
@@ -17,6 +19,8 @@ output:
 ## Foo
 
 #### C. 实例
+
+<iframe width="automatic" height="automatic" src="http://www.youtube.com/embed/9bZkp7q19f0?rel=0" frameborder="0" allowfullscreen></iframe>
 
 <http://46.101.160.242>
 
@@ -39,6 +43,13 @@ data_frame(`命令代码`=c('`-c`','`-d`','`-g`','`-G`','`-s`','`-u`'), `涵义`
 ```
 
 **sample 0**
+
+```{}
+library('slidify')
+author('yugawa')
+```
+
+<iframe width="auto" height="auto" src="http://www.youtube.com/embed/9bZkp7q19f0?rel=0" frameborder="0" allowfullscreen></iframe>
 
 | **命令代码**  |   **涵义**      |                                                             **叙述** |
 |:--------------|-----------------|---------------------------------------------------------------------:|

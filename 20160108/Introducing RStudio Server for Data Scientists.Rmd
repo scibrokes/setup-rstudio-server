@@ -258,13 +258,13 @@ enabled=1
   
 ![*figure-2.2.1 : packages path*](figure/packages-path.jpg)
   
-  原因是通过后台运行`su - -c "R -e \"...\""`，您所安装の所有程序包都与用户root一样，将储存在`r .libPaths()[2]`共享并不会出现在`r .libPaths()[1]`。  倘若您登入个别账户，比方说是登入用户yugawa后才`install.packages()`安装の话，该程序包都将只储存在`r .libPaths()[1]`只能该用户个人使用而已而非共用，而®Studio服务器平台内右下格子的**Packages**标签下の程序包将位于User Library而非System Library，请参考以下数据表：
+  原因是通过后台运行`su - -c "R -e \"...\""`，您所安装の所有程序包都与用户root一样，将储存在`r .libPaths()[2]`共享并不会出现在`r .libPaths()[1]`。  倘若您登入个别账户，比方说是登入用户yugawa后才`install.packages()`安装の话，该程序包都将只储存在`r .libPaths()[1]`只能该用户个人使用而已而非共用，而®Studio服务器平台内右下格子の**Packages**标签下の程序包将位于User Library而非System Library，请参考以下数据表：
   
 | R程序包路径         |            ®Studio |                                     特征 |                               分别 |                                   备注 |
 |:--------------------|--------------------|------------------------------------------|------------------------------------|---------------------------------------:|
 | `r .libPaths()[1]`  |   只会出现在电脑版 |           只有登入个别电脑才能读取程序包 | 安装在每一台电脑の程序包都是独立体 | 修改该路径中の文件，只有该电脑受到影响 |
-| `r .libPaths()[2]`  |   电脑板和服务器版 | 只要是同一个服务器下の用户都能读取程序包 | 安装在每个用户下の程序包都是独立体 | 修改该路径中の文件，只有该用户受到影响 |
-| `r .libPaths()[3]`  |   电脑板和服务器版 | 只要是同一个服务器下の用户都能读取程序包 | 安装在每个用户下の程序包都是共同体 | 修改该路径中の文件，所有用户都受到影响 |
+| `r .libPaths()[2]`  |   电脑板と服务器版 | 只要是同一个服务器下の用户都能读取程序包 | 安装在每个用户下の程序包都是独立体 | 修改该路径中の文件，只有该用户受到影响 |
+| `r .libPaths()[3]`  |   电脑板と服务器版 | 只要是同一个服务器下の用户都能读取程序包 | 安装在每个用户下の程序包都是共同体 | 修改该路径中の文件，所有用户都受到影响 |
 
 *table-2.2.1 : comparison of R packages path*
   
@@ -449,9 +449,9 @@ suppressMessages(source('function/libs.R'))
 
   首先，添加用户可以使用`adduser`或者`useradd`，请参阅以下链接以了解更多详情。
 
-  * [Centos与Ubuntu下的useradd与adduser比较](http://os.51cto.com/art/201208/354693.htm)
-  * [useradd 和 adduser 区别](http://blog.csdn.net/shift_wwx/article/details/42004955)
-  * [useradd 和adduser的区别及用法](http://blog.csdn.net/hzn407487204/article/details/5214234)
+  * [Centos与Ubuntu下のuseradd与adduser比较](http://os.51cto.com/art/201208/354693.htm)
+  * [useradd と adduser 区别](http://blog.csdn.net/shift_wwx/article/details/42004955)
+  * [useradd とadduserの区别及用法](http://blog.csdn.net/hzn407487204/article/details/5214234)
 
   我们先`sudo vim /etc/default/useradd`查看一下比较重要の配置文件，内容如下：
   
@@ -621,7 +621,7 @@ uid=1000(test)  gid=1000(test)  groups=1000(test)
 [test@xueqing ~]$ sudo useradd test6  \\ 新建用户
 ```
 
-  **注明**：以上的执行代码后添加の`\\ ...`，只是注释而已，执行命令代码时无需输入。
+  **注明**：以上の执行代码后添加の`\\ ...`，只是注释而已，执行命令代码时无需输入。
 
 #### C. 实例
 
@@ -709,7 +709,7 @@ uid=1000(test)  gid=1000(test)  groups=1000(test)
 
 ![*figure-3.3.3 : lock user account*](figure/usermod-L-U.jpg)
   
-  一般上所有用户密码都储存在/etc/shadow，而`id kuribayashi1`只能查询用户和用户组俩のid。您可以`vim /etc/shadow`自行修改文件（不过您得了解密码学）。像上图中显示`kuribayashi1:!$...`中的感叹号**!**代表账号已经嵌入密码但被封锁了。倘若是两个感叹号**!!**代表尚未设置密码。
+  一般上所有用户密码都储存在/etc/shadow，而`id kuribayashi1`只能查询用户と用户组俩のid。您可以`vim /etc/shadow`自行修改文件（不过您得了解密码学）。像上图中显示`kuribayashi1:!$...`中の感叹号**!**代表账号已经嵌入密码但被封锁了。倘若是两个感叹号**!!**代表尚未设置密码。
 
   * 查询kuribayashi1の账户是否被封锁：`[root@xueqing ~]# passwd -S kuribayashi1`
   
@@ -862,13 +862,13 @@ test1   ALL=(ALL)   ALL   //这一行是添加の
 | 参数格式      |                                                                                                       叙述 |
 |:--------------|-----------------------------------------------------------------------------------------------------------:|
 | `mode`        |                                                    权限设定字串，格式如下：[ugoa...][[+-=][rwxX]...][,...] |
-| `u`           |       表示该档案的拥有者，g表示与该档案的拥有者属于同一个群体(group)者，o表示其他以外的人，a表示这三者皆是 |
+| `u`           |       表示该档案の拥有者，g表示与该档案の拥有者属于同一个群体(group)者，o表示其他以外の人，a表示这三者皆是 |
 | `+`           |                                                             表示增加权限、-表示取消权限、=表示唯一设定权限 |
 | `r`           |            表示可读取，w表示可写入，x表示可执行，X表示只有当该档案是个子目录或者该档案已经被设定过为可执行 |
 | `-c`          |                                                                 若该档案权限确实已经更改，才显示其更改动作 |
 | `-f`          |                                                                   若该档案权限无法被更改也不要显示错误讯息 |
-| `-v`          |                                                                                     显示权限变更的详细资料 |
-| `-R`          |                                   对目前目录下的所有档案与子目录进行相同的权限变更(即以递回的方式逐个变更) |
+| `-v`          |                                                                                     显示权限变更の详细资料 |
+| `-R`          |                                   对目前目录下の所有档案与子目录进行相同の权限变更(即以递回の方式逐个变更) |
 | `--help`      |                                                                                               显示辅助说明 |
 | `--version`   |                                                                                                   显示版本 |
 
@@ -907,7 +907,7 @@ test1   ALL=(ALL)   ALL   //这一行是添加の
 -rwxrwxrwx  1 root  root  130720  Nov 20  15:16 /usr/bin/sudo \\chmod 777后の权限
 ```
   
-  **注明**：以上的执行代码后添加の`\\ ...`，只是注释而已，执行命令代码时无需输入。您可以参阅以下两篇文章，以了解更多有关权限代号详情：
+  **注明**：以上の执行代码后添加の`\\ ...`，只是注释而已，执行命令代码时无需输入。您可以参阅以下两篇文章，以了解更多有关权限代号详情：
   
   * [Linux chmod 755/777/4755](http://blog.csdn.net/ld513508088/article/details/8362506)
   * [chmod 命令——chmod 755与 chmod 4755, chmod 777区别](http://blog.sina.com.cn/s/blog_5da93c8f0101j5c7.html)
@@ -920,7 +920,7 @@ test1   ALL=(ALL)   ALL   //这一行是添加の
   
 ![*figure-3.5.7 : ssh permit root login*](figure/sshd-permitRootLogin.jpg)
   
-  当您修改设置后，尝试打开PuTTY或者任何ssh工具登入，您将看到以上登入错误信息。这证明您的设置已经生效，然而您可以随时通过网站上Droplet中的执行命令代码修改回。
+  当您修改设置后，尝试打开PuTTY或者任何ssh工具登入，您将看到以上登入错误信息。这证明您の设置已经生效，然而您可以随时通过网站上Droplet中の执行命令代码修改回。
   
   CentOS 7取消了`service`用法，尽管部分情况下还可以使用。`systemctl`是一个`systemd`工具，主要负责控制`systemd`系统と服务管理器。有关更多`systemctl`详情，请参阅：
   
@@ -980,26 +980,49 @@ test1   ALL=(ALL)   ALL   //这一行是添加の
   
   * 以下演示图教导如何新建R Markdown文件并发帖到RPubs。
   
-![*figure-4.2.1 : rmarkdown sample 1*](figure/rmarkdown_1.gif)
+![*figure-4.2.1 : create a rmarkdown sample 1*](figure/rmarkdown_1.gif)
 
-  * 以下演示图教导如何使用R Markdown模板，模板内有嵌入默认程序包和设置，以及文件建立和R版本等信息。
+  * 以下演示图教导如何使用R Markdown模板，模板内有嵌入默认程序包と设置，以及文件建立とR版本等信息。
 
-![*figure-4.2.2 : rmarkdown sample 2*](figure/rmarkdown_2.gif)
+![*figure-4.2.2 : create a rmarkdown sample 2*](figure/rmarkdown_2.gif)
   
 #### B. 新建演示文稿网页
 
+  ®Studio中Beamer是产生pdf电子书，您需要事先`yum -y install texlive-framed`方能使用。以下视频教导如何新建演示文稿。
+  
+<iframe width="420" height="315" src="https://www.youtube.com/embed/R9N-LrtsNgA" frameborder="0" allowfullscreen></iframe>
+
+*video-4.2.1 : create a r presentation sample 1*
+  
   slidify程序包提供了一个演示文稿模板，您可以通过后台安装：
   
 ```{}
 [root@xueqing ~]# su - -c "R -e \"pkgs<-c('slidify','slidifyLibraries'); gpkgs<-paste0('ramnathv/',pkgs); devtools::install_github(gpkgs); BBmisc::lib(pkgs)\""
 ```
   
+  然后您也需要注册个GitHub账户才能使用，您可以先运行一下代码建立模板再修改文件。
+
+```{}
+library('slidify')
+author('yugawa')
+```
+  
+<iframe width="420" height="315" src="https://www.youtube.com/embed/I95GOmLc7TA" frameborder="0" allowfullscreen></iframe>
+  
+*video-4.2.2 : create a r presentation sample 2 - slidify*
+  
   * [Slidify: Modern, simple presentations written in R Markdown](https://benjaminlmoore.wordpress.com/2014/02/24/slidify-presentations-in-r-markdown/)
   * [Whisker](https://github.com/edwindj/whisker)
   
 #### C. 新建Shiny网络应用
   
+  以下视频指导如何新建Shiny app，不过Shiny ioslides出现错误信息，已打开档案[#issue 593](https://github.com/rstudio/rmarkdown/issues/593)。
+  
+<iframe width="420" height="315" src="https://www.youtube.com/embed/wA7duvgDgAc" frameborder="0" allowfullscreen></iframe>
 
+*video-4.2.3 : shiny app sample*
+
+  您也可以参阅[Shiny Gallery](http://shiny.rstudio.com/gallery/)以了解更多Shiny相关例子。
 
 #### D. 新建R程序包
   
@@ -1039,7 +1062,7 @@ sudo service nginx restart
   * [playwith](https://github.com/floybix/playwith) - 绘制互动式图表
   * [fields](https://cran.r-project.org/web/packages/fields/index.html) - 绘制世界地图
   
-  您可以参阅以下例子，建立自己的项目包括报表、网站、程序包等。
+  您可以参阅以下例子，建立自己の项目包括报表、网站、程序包等。
   
   * [An Introduction to R Markdown - Dynamic Documents for R](http://rpubs.com/mansun_kuo/24330)
   * [R語言の工程面](http://wush978.github.io/REngineering/#1)
@@ -1144,19 +1167,23 @@ Sys.info()
   
   **NG镜头**
   
-  - ![测试新建droplet出现の问题](blooper/create-droplet-error.gif)
-  *测试新建droplet出现の问题*
+  - 以下演示图乃*测试新建droplet出现の问题*
   
-  - ![忘了事先安装tex-live程序包导致Beamer.Rmd出现错误信息](blooper/rpresentation.gif)
-  *忘了事先安装tex-live程序包导致Beamer.Rmd出现错误信息*
+![测试新建droplet出现の问题](blooper/create-droplet-error.gif)
   
-  - ![终止了ssh远程操作后，droplet内运行执行代码时无法打空格键（在其它地点上同样的网站却可以）](blooper/space-button-error.gif)
-  *终止了ssh远程操作后，droplet内运行执行代码时无法打空格键（在其它地点上同样的网站却可以）*
+  - 以下演示图乃*忘了事先安装tex-live程序包导致Beamer.Rmd出现错误信息*
+
+![忘了事先安装tex-live程序包导致Beamer.Rmd出现错误信息](blooper/rpresentation.gif)
   
-  - ![终止了ssh远程操作后，droplet内运行执行代码时无法打空格键（在其它地点上同样的网站却可以）](blooper/space-button-error2.gif)
-  *终止了ssh远程操作后，droplet内运行执行代码时无法打空格键（在其它地点上同样的网站却可以）*
+  - 以下演示图乃*终止了ssh远程操作后，droplet内运行执行代码时无法打空格键（在其它地点上同样の网站却可以）*
+
+![终止了ssh远程操作后，droplet内运行执行代码时无法打空格键（在其它地点上同样の网站却可以）](blooper/space-button-error.gif)
   
+  - 以下演示图乃*终止了ssh远程操作后，droplet内运行执行代码时无法打空格键（在其它地点上同样の网站却可以）*
   
+![终止了ssh远程操作后，droplet内运行执行代码时无法打空格键（在其它地点上同样の网站却可以）](blooper/space-button-error2.gif)
+
+
 ### 第6.3章 : 参考文献
   
   * [Initial Server Setup with CentOS 7](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-centos-7)
