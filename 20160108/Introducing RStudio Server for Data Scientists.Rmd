@@ -66,6 +66,7 @@ suppressAll(lib(pkgs)); rm(pkgs)
   - ®Studio AMI
   - Azure（可观看[Data Science with Microsoft Azure Machine Learning, Microsoft SQL Server and R](https://www.youtube.com/watch?v=_kMIns-MK0s)视频教程）
   - [Revolution R Enterprise](http://www.revolutionanalytics.com/revolution-r-enterprise)（可观看[Microsoft unwraps a big-data analytics platform based on R](http://www.computerworld.com/article/3019817/data-analytics/microsoft-unwraps-a-big-data-analytics-platform-based-on-r.html)视频教程）
+  - 您也可以在[DataDog](https://www.datadoghq.com/)建立个服务器。
   
   对于数据科学有兴趣の学者们，建议登门造访堰平兄旗下の[雪晴数据网](http://www.xueqing.cc/course)报名修读**免收费**课程。
 
@@ -117,8 +118,8 @@ yugawa    ALL=(ALL)   NOPASSWD: ALL     \\添加这一行
   
 ![*figure-1.2.1 : droplet ip webpage not available*](figure/droplet-ip-webpage-not-available.jpg)
 
-  由于CentOSとRed Hat都是[Red Hat Enterprise Linux](https://www.redhat.com/zh/global/japan)旗下所属并维修の开源软件，而Linux众多资源库下のepel资源库比较方便使用，并且为大多数人使用，例如程序员熟悉のMySQL、php、nginxとR等。故此，我们先行安装epel资源库并且更新虚拟操作系统。
-
+  由于CentOSとRed Hat都是[Red Hat Enterprise Linux](https://www.redhat.com/zh/global/japan)旗下所属并维修の开源软件，而Linux众多资源库下のepel资源库比较方便使用，并且为大多数人使用，例如程序员熟悉のMySQL、php、nginxとR等。故此，我们先行安装epel资源库并且更新虚拟操作系统。（安装过程可能需要好几分钟）
+  
 ```{}
 [yugawa@xueqing ~]$ sudo yum install -y epel-release
 [yugawa@xueqing ~]$ sudo yum update -y
@@ -126,6 +127,7 @@ yugawa    ALL=(ALL)   NOPASSWD: ALL     \\添加这一行
   
   您可以参阅以下文章比较，或者直接选择您想要安装の网络服务器，而在下选择使用nginx。
   
+  * [How To Set Up nginx Virtual Hosts (Server Blocks) on Ubuntu 12.04 LTS](https://www.digitalocean.com/community/tutorials/how-to-set-up-nginx-virtual-hosts-server-blocks-on-ubuntu-12-04-lts--3)
   * [Comparison of the usage of Nginx vs. Tomcat for websites](http://w3techs.com/technologies/comparison/ws-nginx,ws-tomcat)
   * [Apache vs Nginx: Practical Considerations](https://www.digitalocean.com/community/tutorials/apache-vs-nginx-practical-considerations)
   
@@ -134,8 +136,8 @@ yugawa    ALL=(ALL)   NOPASSWD: ALL     \\添加这一行
 ```{}
 [yugawa@xueqing ~]$ sudo yum install -y vim
 ```
-
-  倘若您想要安装最新版本のnginx，可以运行以下代码：
+  
+  倘若您想要安装[最新版本のnginx](http://nginx.org/en/download.html)，可以运行以下代码：
 
 ```{}
 [yugawa@xueqing ~]$sudo vim /etc/yum.repos.d/nginx.repo
@@ -146,11 +148,11 @@ yugawa    ALL=(ALL)   NOPASSWD: ALL     \\添加这一行
 ```{}
 [nginx]
 name=nginx repo
-baseurl=http://nginx.org/packages/centos/$releasever/$basearch/
+baseurl=http://nginx.org/packages/mainline/centos/$releasever/$basearch/
 gpgcheck=0
 enabled=1
 ```
-
+  
   点击键盘上のEsc后`:wq`（不行就`:wq!`）=储存并退出后（`:q!`=不储存而退出），可以开始安装网络服务器了。
 
 ```{}
@@ -170,9 +172,9 @@ enabled=1
   而目前您可以通过以下代码，自行**启动**、**停止**或者**重启**您自个儿建立の网络服务器。有关systemctl，请参阅[第3.5章 : 用户安全配置]。
   
 ```{}
-[yugawa@xueqing ~]$ sudo systemctl nginx start
-[yugawa@xueqing ~]$ sudo systemctl nginx stop
-[yugawa@xueqing ~]$ sudo systemctl nginx restart
+[yugawa@xueqing ~]$ sudo systemctl start nginx
+[yugawa@xueqing ~]$ sudo systemctl stop nginx
+[yugawa@xueqing ~]$ sudo systemctl restart nginx
 ```
 
   倘若您有设置防火墙导致无法运行nginx，您可以尝试运行以下代码或查阅[How To Install Nginx on CentOS 7](https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-centos-7)以了解更多详情。
@@ -187,6 +189,8 @@ enabled=1
 
   - 您の默认文件应该在路径/usr/share/nginx/html/index.html，倘若您想要修改该页面，可以`sudo vim /usr/share/nginx/html/index.html`
   - 有关nginx网络服务器の**设定文件**默认路径应该位于/etc/nginx/nginx.conf，您可以随意/自行修改设置。
+  - 您可以`cd /etc/nginx`后`ls -F`查看有哪些控件文件，详情请参阅[How To Configure The Nginx Web Server On a Virtual Private Server](https://www.digitalocean.com/community/tutorials/how-to-configure-the-nginx-web-server-on-a-virtual-private-server)
+  - 您也可以参阅[How to Configure Nginx](https://www.linode.com/docs/websites/nginx/how-to-configure-nginx)
 
 ![*figure-1.2.2 : sample editing webpage content*](figure/nginx-edit-webpage.gif)
 
@@ -206,7 +210,7 @@ enabled=1
 
 ### 第2.1章 : 安装R
   
-  就如之前所说，Red HatとCentOS操作系统のR语言统计软件收集在epel资源库中，您目前可以安装资源库中最新版本のR（CRAN目前维护のLinux版R，请查阅[此处](https://cran.rstudio.com/bin/)）。
+  就如之前所说，Red HatとCentOS操作系统のR语言统计软件收集在epel资源库中，您目前可以安装资源库中最新版本のR（CRAN目前维护のLinux版R，请查阅[此处](https://cran.rstudio.com/bin/)）。（安装过程可能需要好几分钟）
 
 ```{}
 [yugawa@xueqing ~]$ sudo yum install -y R
@@ -280,12 +284,12 @@ enabled=1
   您目前可以尝试安装一些与编写rmarkdown网页と数据分析基本所需の程序包。
   
 ```{}
-[yugawa@xueqing ~]$ su - -c "R -e \"pkgs <- c('plyr', 'dplyr', 'stringr', 'purrr', 'magrittr', 'doParallel', 'reshape2', 'tidyr', 'googleVis', 'markdown', 'rmarkdown', 'DT', 'lubridate', 'sqldf', 'checkpoint'); devtools::install_github('berndbischl/BBmisc'); library('BBmisc'); lapply(pkgs, install.packages, repos='https://cran.rstudio.com'); lib(pkgs)\""
+[yugawa@xueqing ~]$ su - -c "R -e \"pkgs <- c('plyr', 'dplyr', 'stringr', 'purrr', 'magrittr', 'doParallel', 'reshape2', 'tidyr', 'googleVis', 'markdown', 'rmarkdown', 'DT', 'lubridate', 'sqldf', 'checkpoint', 'RCurl', 'XML', 'openxlsx', 'rvest'，'multidplyr', 'sparkTable', 'speedglm', 'rlist', 'ckanr'); devtools::install_github('berndbischl/BBmisc'); install_github('htmlwidgets/sparkline'); lapply(pkgs, install.packages, repos='https://cran.rstudio.com'); BBmisc::lib(pkgs)\""
 ```
   
-    经常使用BBmisc,是为了一次性使用`lib()`安装并读取多个程序包（不过在后台出现/usr/libx64/library路径问题），方便一览安装程序包是否成功（尤其是在安装十几个程序包时，系统不会自动总结您安装成功失败）。`lib()`最大の优点就是会自动读取您输入の程序包，若尚未安装会自动帮您安装后读取。
+  经常使用BBmisc,是为了一次性使用`lib()`安装并读取多个程序包（不过在后台出现/usr/libx64/library路径问题），方便一览安装程序包是否成功（尤其是在安装十几个程序包时，系统不会自动总结您安装成功失败）。`lib()`最大の优点就是会自动读取您输入の程序包，若尚未安装会自动帮您安装后读取。
   
-  您也可以先安装[Rdym](https://github.com/wrathematics/Rdym)と[checkpoint](https://cran.r-project.org/web/packages/checkpoint/vignettes/checkpoint.html)两个程序包，以方便您日后编程。
+  您也可以先安装[Rdym](https://github.com/wrathematics/Rdym)と[checkpoint](https://cran.r-project.org/web/packages/checkpoint/vignettes/checkpoint.html)两个程序包，以方便您日后编程。以上ckanr程序包基本上可以方便您查询と管理cran程序包资讯。
   
 ```{}
 [yugawa@xueqing ~]$ su - -c "R -e \"devtools::install_github('wrathematics/Rdym')\""
@@ -360,13 +364,13 @@ suppressMessages(source('function/libs.R'))
 
 
 ### 第2.4章 : 安装Shiny服务器
-
-  设置好®Studio服务器，目前您可以运行以下代码安装shiny程序包，倘若是开发版程序包则`su - -c "R -e \"devtools::install_github('rstudio/shiny')\""`。
+  
+  设置好®Studio服务器，目前您可以运行以下代码安装shiny程序包，倘若是开发版程序包则`su - -c "R -e \"devtools::install_github('rstudio/shiny')\""`。（rsconnect等其它程序包是使用Shiny時需要の程序包）
 
 ```{}
 [yugawa@xueqing ~]$ su - -c "R -e \"install.packages('shiny', repos='https://cran.rstudio.com/')\""
 ```
-
+  
   接着到®Studio官方网の[Shiny服务器下载](https://www.rstudio.com/products/shiny/download-server/)拷贝安装器网址，通过运行以下代码下载并安装。
 
 ```{}
@@ -958,7 +962,10 @@ test1   ALL=(ALL)   ALL   //这一行是添加の
 
 ```{}
 [root@xueqing ~]# yum install -y git
+[root@xueqing ~]# yum install -y subversion
 ```
+
+  倘若您无法连接到GitHub.com，您可以参阅[®Studio and GitHub](http://www.r-bloggers.com/rstudio-and-github/)。
 
 
 ### 第4.2章 : 源代码文件管理
@@ -967,8 +974,9 @@ test1   ALL=(ALL)   ALL   //这一行是添加の
 
   至于如何操作，可以直接阅读[Mastering ®Studio Develop Communicate and Collaborate with R](https://englianhu.files.wordpress.com/2015/12/mastering-rstudio-develop-communicate-and-collaborate-with-r.pdf)，书中讲解得非常仔细。
   
-  倘若您想要确保您の项目独立性，可以使用Pakrat功能，那么您の项目所需要の程序包都将会备份在该项目中。那么官方程序包有何修改更新，都将不会影响到您已下载并储存の程序包了。
-  
+  倘若您想要确保您の项目独立性，可以使用Pakrat功能，那么您の项目所需要の程序包都将会备份在该项目中。那么官方程序包有何修改更新，都将不会影响到您已下载并储存の程序包了。以下の章节A.，章节B.，章节C.と章节D.都可以事先在GitHub.com新建个repo方便储存代码文件，您可以参考*video-4.2.5*。
+
+
 #### A. 新建R Markdown网页
   
   mosaic程序包提供了一个R Markdown模板，您可以通过后台`su - -c "R -e \"install.packages('mosaic', repos='https://cran.rstudio.com')\""`安装后使用（安装过程可能需要好几分钟）。
@@ -1016,9 +1024,9 @@ author('yugawa')
   
 #### C. 新建Shiny网络应用
   
-  以下视频指导如何新建Shiny app，不过Shiny ioslides出现错误信息，已打开档案[#issue 593](https://github.com/rstudio/rmarkdown/issues/593)。
+  以下视频指导如何新建Shiny app，有关修改Shiny app网址，请参阅[美化网址]。
   
-<iframe width="420" height="315" src="https://www.youtube.com/embed/wA7duvgDgAc" frameborder="0" allowfullscreen></iframe>
+<iframe width="420" height="315" src="https://www.youtube.com/embed/f_kasoUtaX0" frameborder="0" allowfullscreen></iframe>
 
 *video-4.2.3 : shiny app sample*
 
@@ -1026,13 +1034,50 @@ author('yugawa')
 
 #### D. 新建R程序包
   
+  您也可以通过New Project新建程序包。
   
+<iframe width="560" height="315" src="https://www.youtube.com/embed/rmiCnQEnB3g" frameborder="0" allowfullscreen></iframe>
+  
+*video-4.2.4 : create a r package sample 1*
+
+  或者建立R程序包后，把程序包上载到GitHub.com。
+
+<iframe width="420" height="315" src="https://www.youtube.com/embed/j8_XXNqb2y8" frameborder="0" allowfullscreen></iframe>
+
+*video-4.2.5 : create a r package sample 2*
+
   
 ### 第4.3章 : 美化网址
 
+  就如[Shiny服务器设置]所说，一旦您安装了Shiny服务器后，您一打开<http://46.101.160.242:3838/sample-apps/hello/>就能使用。而默认路径为/srv/shiny-server/，所有储存在该路径内のShiny app都将自动成为Shiny app使用，而您只需要通过®Studio服务器就能新建了。
+  
+  倘若您已有Shiny app储存在电脑上，您可以使用[FileZilla](https://filezilla-project.org/)传送文件到服务器上。
+  
+  然而，我们可以在GitHub新建个/srv/shiny-server/然后直接读取文件，您可以参考[Eng Lian Hu Shiny-Server](https://github.com/englianhu/shiny-server)。首先您需要到该路径初始化git：
+  
 ```{}
-sudo vim /etc/nginx/sites-enabled/default
+[root@xueqing ~]# cd /srv/shiny-server
+[root@xueqing ~]# git init
+```
+  
+  然后就如同*video-4.2.5*般，在GitHub新建repo并拷贝到New Project中。然后您需要修改文件内容，有关nginx网络服务器设置详情，请参阅[nginx网络服务器の设定]。那么就先查看一下有啥文件。
 
+```{}
+[root@xueqing ~]# ls -l /etc/nginx
+[root@xueqing ~]# 
+```
+
+  倘若没有文件sites-available和sites-enabled,您需要新建。
+
+  * [nginx missing sites-available directory](http://ask.webatall.com/nginx/17665_nginx-missing-sites-available-directory.html)
+  * [nginx missing sites-available directory](http://stackoverflow.com/questions/17413526/nginx-missing-sites-available-directory)
+
+<s>
+```{}
+[root@xueqing ~]# vim /etc/nginx/sites-enabled/default
+```
+
+```{}
 location /shiny/ {
   proxy_pass http://127.0.0.1:3838/;
 }
@@ -1040,23 +1085,34 @@ location /shiny/ {
 location /rstudio/ {
   proxy_pass http://127.0.0.1:8787/;
 }
-
-sudo service nginx restart
 ```
+
+  修改了设置后，就得重启下服务器哦！
+  
+```{}
+[root@xueqing ~]# systemctl nginx restart
+```
+
+  那么，现在您可以登入以下网址，美化了一下，现在网址就好看多了。
+  
+  * <http://46.101.160.242/rstudio/>
+  * <http://46.101.160.242/shiny/></s>
+
+  有关更多美化网址详情，请参阅：
+  
+  * [Step 9: Make pretty URLs for RStudio Server and Shiny Server](http://deanattali.com/2015/05/09/setup-rstudio-shiny-server-digital-ocean/#reverse-proxy)
+  * [Step 10: Custom domain name](http://deanattali.com/2015/05/09/setup-rstudio-shiny-server-digital-ocean/#custom-domain)
 
 
 ### 第4.4章 : 范例
 
-```{}
-[root@xueqing ~]# su - -c "R -e \"pkgs <- c('R.basic','playwith','fields'); plyr::l_ply(pkgs, install.packages, repos='https://cran.rstudio.com'); BBmisc::lib(pkgs)\""
-```
+  这儿有个挺有趣儿の程序包playwith，您可以尝试安装后使用。
 
 ```{}
 [root@xueqing ~]# su - -c "R -e \"devtools::install_gihtub('floybix/playwith'); \""
 [root@xueqing ~]# su - -c "R -e \"install.packages(c('R.basic'), contriburl='http://www.braju.com/R/repos/')\""
+[root@xueqing ~]# su - -c "R -e \"install.packages(c('fields'), repos='https://cran.rstudio.com')\""
 ```
-
-  您可以安装以下程序包：
   
   * [R.basic](http://www.braju.com/R/repos/) - 绘制透视图表
   * [playwith](https://github.com/floybix/playwith) - 绘制互动式图表
@@ -1083,6 +1139,8 @@ sudo service nginx restart
 
 ### 第5.1章 : 认识と掌握®Studio
   
+  由于此网页演示图太多导致负荷太重，故此将第5.章简介介绍，将来会在别篇文章中详细分享“统计学とR语言”。
+  
   前阵子阅读了[Mastering ®Studio Develop Communicate and Collaborate with R](https://englianhu.files.wordpress.com/2015/12/mastering-rstudio-develop-communicate-and-collaborate-with-r.pdf)后，觉得该书本内容非常及时（新书2015年刚发行不久の缘故），而且内容非常实用，故此也分享一下该书，很中肯の介绍了如何安装、功能介绍、如何使用®Studio甚至是遇到疑难杂症の时候，可以到哪儿寻找高手求助或者与业界人士交流等。
   
   以下乃一些与®Studio相关の书籍，有兴趣可以直接打开链接在线阅读或下载：
@@ -1093,13 +1151,21 @@ sudo service nginx restart
   * [Mastering ®Studio Develop Communicate and Collaborate with R](https://englianhu.files.wordpress.com/2015/12/mastering-rstudio-develop-communicate-and-collaborate-with-r.pdf)
   * [Computational Statistics using R and ®Studio - An Introduction for Scientists](https://englianhu.files.wordpress.com/2016/01/computational-statistics-using-r-and-rstudio-an-introduction-for-scientists.pdf)
   * [Using R and ®Studio for Data Management - Statistical Analysis and Graphics (2nd Edition)](https://englianhu.files.wordpress.com/2016/01/using-r-and-rstudio-for-data-management-statistical-analysis-and-graphics-2nd-edit.pdf)
+  * [Shinyを使ってR言語のプログラムをWebアプリ化する](http://tech-sketch.jp/2014/03/shiny-rweb.html)
 
 
 ### 第5.2章 : 统计学とR
 
-  * [Statistics with ®Studio and Shiny]()
+  它日会再分享统计学相关文章，您可以先参考以下一些统计学相关书籍：
+  
+  * [Modeling and Solving Linear Programming with R](https://englianhu.files.wordpress.com/2016/01/modeling-and-solving-linear-programming-with-r.pdf)
+  * [Statistics with R](http://zoonek2.free.fr/UNIX/48_R/all.html)
+  * [Introductory Statistics with R (2nd Edition)](http://www.academia.dk/BiologiskAntropologi/Epidemiologi/PDF/Introductory_Statistics_with_R__2nd_ed.pdf)
   * [i love stats](http://www.ilovestats.org/maximum-likelihood/)
   * [Free statistics e-books for download](http://www.r-statistics.com/2009/10/free-statistics-e-books-for-download/)
+  * [Linear Models with R](https://englianhu.files.wordpress.com/2016/01/faraway-linear-models-with-r-e28093-2009.pdf)
+  * [Extending the Linear Model with R](https://englianhu.files.wordpress.com/2016/01/faraway-extending-the-linear-model-with-r-e28093-2006.pdf)
+  * [迷你书 R的极客理想-工具篇](https://englianhu.files.wordpress.com/2016/01/e8bfb7e4bda0e4b9a6-re79a84e69e81e5aea2e79086e683b3-e5b7a5e585b7e7af87.pdf)
 
 
 
@@ -1203,6 +1269,6 @@ Sys.info()
   * [Mastering ®Studio Develop Communicate and Collaborate with R](https://englianhu.files.wordpress.com/2015/12/mastering-rstudio-develop-communicate-and-collaborate-with-r.pdf)
   
   
-**Powered by - Copyright© Intellectual Property Rights of <img src='https://avatars0.githubusercontent.com/u/13562894?v=3&s=200' width='24'> [Scibrokes®](http://www.scibrokes.com)個人の経営企業**
+**Powered by - Copyright© Intellectual Property Rights of <img src='figure/oda-army.jpg' width='24'> [Scibrokes®](http://www.scibrokes.com)個人の経営企業**
 
 
