@@ -1,5 +1,5 @@
 ---
-title: "![](https://www.rstudio.com/wp-content/uploads/2014/03/blue-125.png)とShiny服务器"
+title: "![®Studio](https://www.rstudio.com/wp-content/uploads/2014/03/blue-125.png)"
 author: "[®γσ, Eng Lian Hu](http://englianhu.wordpress.com) <img src='figure/ShirotoNorimichi.jpg' width='24'> 白戸則道®"
 date: "1/8/2016"
 output:
@@ -11,18 +11,6 @@ output:
     theme: cerulean
     toc: yes
     toc_depth: 4
-  pdf_document:
-    fig_caption: yes
-    fig_height: 3
-    fig_width: 5
-    highlight: haddock
-    theme: cerulean
-    toc: yes
-    toc_depth: 4
-  word_document:
-    fig_caption: yes
-    fig_height: 3
-    fig_width: 5
 ---
 
 **为数据科学家们量身定做の专业统计软件 --- [®Studio服务器](https://www.rstudio.com/)**
@@ -202,6 +190,7 @@ enabled=1
   * [第2.2章 : 安装R服务器中の程序包]
   * [第2.3章 : 安装®Studio服务器]
     * [®Studio服务器设置]
+    * [®Studio完整手册]
     * [自动读取程序包]
   * [第2.4章 : 安装Shiny服务器]
     * [Shiny服务器设置]
@@ -284,15 +273,16 @@ enabled=1
   您目前可以尝试安装一些与编写rmarkdown网页と数据分析基本所需の程序包。
   
 ```{}
-[yugawa@xueqing ~]$ su - -c "R -e \"pkgs <- c('plyr', 'dplyr', 'stringr', 'purrr', 'magrittr', 'doParallel', 'reshape2', 'tidyr', 'googleVis', 'markdown', 'rmarkdown', 'DT', 'lubridate', 'sqldf', 'checkpoint', 'RCurl', 'XML', 'openxlsx', 'rvest'，'multidplyr', 'sparkTable', 'speedglm', 'rlist', 'ckanr'); devtools::install_github('berndbischl/BBmisc'); install_github('htmlwidgets/sparkline'); lapply(pkgs, install.packages, repos='https://cran.rstudio.com'); BBmisc::lib(pkgs)\""
+[yugawa@xueqing ~]$ su - -c "R -e \"pkgs <- c('plyr', 'dplyr', 'stringr', 'purrr', 'magrittr', 'doParallel', 'reshape2', 'tidyr', 'googleVis', 'markdown', 'rmarkdown', 'DT', 'lubridate', 'sqldf', 'checkpoint', 'RCurl', 'XML', 'openxlsx', 'rvest'，'multidplyr', 'sparkTable', 'speedglm', 'rlist', 'ckanr', 'BBmisc'); library('devtools'); install_github('htmlwidgets/sparkline'); lapply(pkgs, install.packages, repos='https://cran.rstudio.com'); BBmisc::lib(pkgs)\""
 ```
   
-  经常使用BBmisc,是为了一次性使用`lib()`安装并读取多个程序包（不过在后台出现/usr/libx64/library路径问题），方便一览安装程序包是否成功（尤其是在安装十几个程序包时，系统不会自动总结您安装成功失败）。`lib()`最大の优点就是会自动读取您输入の程序包，若尚未安装会自动帮您安装后读取。
+  经常使用BBmisc,是为了一次性使用`lib()`安装并读取多个程序包（不过在后台出现/usr/libx64/library路径问题），方便一览安装程序包是否成功（尤其是在安装十几个程序包时，系统不会自动总结您安装成功失败）。`lib()`最大の优点就是会自动读取您输入の程序包，若尚未安装会自动帮您安装后读取。倘若所列程序包安装结果失败，可以逐个安装开发版。
   
-  您也可以先安装[Rdym](https://github.com/wrathematics/Rdym)と[checkpoint](https://cran.r-project.org/web/packages/checkpoint/vignettes/checkpoint.html)两个程序包，以方便您日后编程。以上ckanr程序包基本上可以方便您查询と管理cran程序包资讯。
+  您也可以先安装[Rdym](https://github.com/wrathematics/Rdym)、[checkpoint](https://cran.r-project.org/web/packages/checkpoint/vignettes/checkpoint.html)と[profvis](https://rpubs.com/wch/123888)三个程序包，以方便您日后编程。以上ckanr程序包基本上可以方便您查询と管理cran程序包资讯、Rdym方便您模糊记得某些函数、程序包等温馨提醒Do you mean 'xxxx'?。然后profvis非常实用，可以详细列出并绘图您运行任何代码时のsystem.time()，可以参阅以上链接或者参考[profvis example](https://rpubs.com/wch/124655)。
   
 ```{}
 [yugawa@xueqing ~]$ su - -c "R -e \"devtools::install_github('wrathematics/Rdym')\""
+[yugawa@xueqing ~]$ su - -c "R -e \"devtools::install_github("rstudio/profvis")\""
 ```
   
   您可以使用用户root，倘若您想要赋予其它用户权限以共享文件，请参阅[第3.章 : CentOS 7用户账户配置]。
@@ -317,19 +307,26 @@ enabled=1
   那现在就直接在®Studio服务器の登入页面输入用户名yugawa以及密码尝试登入，然后再把刚才下载のrstudio-server-rhel-0.99.849-x86_64.rpm安装器删除掉。
 
 #### ®Studio服务器设置
-
-  建立好®Studio服务器之后，目前您已可以通过以下代码，自行**启动**、**停止**或者**重启**您自个儿建立の®Studio服务器。
+  
+  建立好®Studio服务器之后，目前您已可以通过以下代码，自行**启动**、**停止**或者**重启**等您自个儿建立の®Studio服务器。
 
 ```{}
 [yugawa@xueqing ~]$ sudo rstudio-server stop
 [yugawa@xueqing ~]$ sudo rstudio-server start
 [yugawa@xueqing ~]$ sudo rstudio-server restart
+[yugawa@xueqing ~]$ sudo rstudio-server suspend-all
+[yugawa@xueqing ~]$ sudo rstudio-server force-suspend-session <pid>
+[yugawa@xueqing ~]$ sudo rstudio-server force-suspend-all
 ```
 
   您亦可登入后台修改设置，®Studio原本是没有任何默认の控件文件，不过您可以添加/etc/rstudio/rserver.confと/etc/rstudio/rsession.conf两个控件文件。有关更多详情，请参阅以下文章：
 
   * [RStudio Server: Managing the Server](https://support.rstudio.com/hc/en-us/articles/200532327-Managing-the-Server)
   * [RStudio Server: Configuring the Server](https://support.rstudio.com/hc/en-us/articles/200552316-Configuring-the-Server)
+
+#### ®Studio完整手册
+  
+  您可以直接阅读官方[®Studio Server Professional v0.99.482 Administrator's Guide v1.4.0](https://s3.amazonaws.com/rstudio-server/rstudio-server-pro-0.98.507-admin-guide.pdf)手册，以掌握®Studio服务器。（版本有别，但操作方式差异不大）
 
 #### 自动读取程序包
   
@@ -345,7 +342,7 @@ suppressAll(lib(pkgs)); rm(pkgs)
 ```
   
   好！把以上のlibs.R文件储存后，您需要在®Studio服务器中再添加个R Script，粘贴以下代码并将该文件命名为.Rprofile储存在默认路径。（`getwd()`就可以知道默认路径在哪儿了）
-
+  
 ```{}
 ############ Auto Load Packages ##################
 ## Loading the packages and setting adjustment
@@ -457,7 +454,7 @@ suppressMessages(source('function/libs.R'))
   * [useradd と adduser 区别](http://blog.csdn.net/shift_wwx/article/details/42004955)
   * [useradd とadduserの区别及用法](http://blog.csdn.net/hzn407487204/article/details/5214234)
 
-  我们先`sudo vim /etc/default/useradd`查看一下比较重要の配置文件，内容如下：
+  我们先`sudo vim /etc/default/useradd`（倘若您还在登入着用户yugawa或者其它用户，要转为用户root只需要`su -`就行了）查看一下比较重要の配置文件，内容如下：
   
 ```{}
 # useradd defaults file
@@ -534,7 +531,7 @@ ENCRYPT_METHOD SHA512
 [root@xueqing ~]# passwd test
 ```
   
-  接着，您可以`id test`查看用户信息。
+  接着，您可以`id test`查看用户信息。（倘若您使用の是一开始建立の服务器[46.101.160.242](http://46.101.160.242)，依照章节运行代码到此，那么`id test`将会是`uid=1002(test)  gid=1004(test)  groups=1004(test)`）
   
 ```{}
 [root@xueqing ~]# id test
@@ -631,7 +628,7 @@ uid=1000(test)  gid=1000(test)  groups=1000(test)
 
   **实例1:**
   
-  * 尝试新建用户。
+  * 尝试新建用户。（倘若您使用の是一开始建立の服务器[46.101.160.242](http://46.101.160.242)，依照章节运行代码到此，那么将会出现错误信息`useradd: user 'kuribayashi' already exists`，在[Shiny服务器设置]已新建该用户并直接加入Shiny-apps组）
   
 ```{}
 [root@xueqing ~]# useradd kuribayashi
@@ -642,7 +639,7 @@ uid=1000(test)  gid=1000(test)  groups=1000(test)
   
 ![*figure-3.2.2 : create user*](figure/create-user.jpg)
 
-  * 倘若您想要查询系统上の所有用户资料。
+  * 倘若您想要查询系统上の所有用户资料。（一般上500）
   
 ```{}
 [root@xueqing ~]# cat /etc/passwd
@@ -964,7 +961,7 @@ test1   ALL=(ALL)   ALL   //这一行是添加の
 [root@xueqing ~]# yum install -y git
 [root@xueqing ~]# yum install -y subversion
 ```
-
+  
   倘若您无法连接到GitHub.com，您可以参阅[®Studio and GitHub](http://www.r-bloggers.com/rstudio-and-github/)。
 
 
@@ -1036,7 +1033,7 @@ author('yugawa')
   
   您也可以通过New Project新建程序包。
   
-<iframe width="560" height="315" src="https://www.youtube.com/embed/rmiCnQEnB3g" frameborder="0" allowfullscreen></iframe>
+<iframe width="420" height="315" src="https://www.youtube.com/embed/rmiCnQEnB3g" frameborder="0" allowfullscreen></iframe>
   
 *video-4.2.4 : create a r package sample 1*
 
@@ -1067,7 +1064,7 @@ author('yugawa')
 [root@xueqing ~]# 
 ```
 
-  倘若没有文件sites-available和sites-enabled,您需要新建。
+  倘若没有文件sites-availableとsites-enabled,您需要新建。
 
   * [nginx missing sites-available directory](http://ask.webatall.com/nginx/17665_nginx-missing-sites-available-directory.html)
   * [nginx missing sites-available directory](http://stackoverflow.com/questions/17413526/nginx-missing-sites-available-directory)
@@ -1090,9 +1087,9 @@ location /rstudio/ {
   修改了设置后，就得重启下服务器哦！
   
 ```{}
-[root@xueqing ~]# systemctl nginx restart
+[root@xueqing ~]# systemctl restart nginx
 ```
-
+  
   那么，现在您可以登入以下网址，美化了一下，现在网址就好看多了。
   
   * <http://46.101.160.242/rstudio/>
@@ -1165,7 +1162,7 @@ location /rstudio/ {
   * [Free statistics e-books for download](http://www.r-statistics.com/2009/10/free-statistics-e-books-for-download/)
   * [Linear Models with R](https://englianhu.files.wordpress.com/2016/01/faraway-linear-models-with-r-e28093-2009.pdf)
   * [Extending the Linear Model with R](https://englianhu.files.wordpress.com/2016/01/faraway-extending-the-linear-model-with-r-e28093-2006.pdf)
-  * [迷你书 R的极客理想-工具篇](https://englianhu.files.wordpress.com/2016/01/e8bfb7e4bda0e4b9a6-re79a84e69e81e5aea2e79086e683b3-e5b7a5e585b7e7af87.pdf)
+  * [迷你书 Rの极客理想-工具篇](https://englianhu.files.wordpress.com/2016/01/e8bfb7e4bda0e4b9a6-re79a84e69e81e5aea2e79086e683b3-e5b7a5e585b7e7af87.pdf)
 
 
 
@@ -1212,13 +1209,15 @@ Sys.info()
   
   虽然使用了好几天の时间不断の多次修改文章，翻查以及搜索并核对、校对代码と可行性，是为了确保所有代码と知识分享都是实用且可行の。
   
+  本想着要建立个类似[®Studio AMI](http://www.louisaslett.com/RStudio_AMI/)，一键就能安装这统计学家们专用、削铁如泥の[アルテマウェポン](http://finalfantasy.wikia.com/wiki/Ultima_Weapon_(weapon))，结果找不到任何参考文献，已向DO反映意见，希望明天会更好！
+  
   **学海无涯，唯勤是岸**，由于在下也是边学边分享（充实自己、以防它日忘记之余，也可以了解自己の能力以及慢慢学习成长）以及学以致用，可能会出现班门弄斧の窘境。故此特别声明，倘若文章中有何出错，敬请诸位包涵并指点，在下会再继续努力。再次谢谢。
   
   僕はいつも[**明治維新**](http://rpubs.com/englianhu/r-world)の理念と日本の美の概念を[座右の銘](http://www.kekejp.com/kouyu/201205/36687.shtml)になってるさあ，いつまでも一生懸命に学び続けなれば幸いです。皆さん，どうもありがとうございました。
   
 #### 幕后制作花絮与NG
   
-  在此与大伙儿分享幕后の每一分努力，也警惕一下自己**没有最好，只有更好**。
+  在此与大伙儿分享幕后の每一分努力（以下只是一部分NG），也警惕一下自己**没有最好，只有更好**。
   
   - 本文章中，当一提及新の术语の时候，一般上都有添加可参阅链接，以方便学者可以立刻参考该术语の含义与应用等切确と相关资讯。
   - 在*figure-1.1.1 : Create Droplet*中注册のxueqing2，是再次测试xueqingと此教程而设。以确保质量管理。不过在下并不担心Scibrokes®の后台ip一览无余，因为都已经做足备份と随时可以修复、搬迁甚至新建新平台。
