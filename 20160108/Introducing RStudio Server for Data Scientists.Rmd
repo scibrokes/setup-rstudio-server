@@ -951,7 +951,11 @@ test1   ALL=(ALL)   ALL   //这一行是添加の
   - [BitBucket](https://bitbucket.org)
   - [GitHub**Gist**](https://gist.github.com/)
   
-  ®Studio软件上拥有GitHubとGit链接功能，用户可以直接通过该统计软件直接上下载并修改编码等，非常方便。
+  ®Studio软件上拥有GitHubとGit链接功能，用户可以直接通过该统计软件直接上下载并修改编码等，非常方便。首先您得安装以下程序包，方能发帖：
+  
+```{}
+[root@xueqing ~]# su - -c "R -e \"pkgs<-c('PKI','pakrat','rsconnect'); plyr::l_ply(pkgs, install.packages, repos='https://cran.rstudio.com'); BBmisc::lib(pkgs)\""
+```
   
   至于如何操作，可以直接阅读[Mastering ®Studio Develop Communicate and Collaborate with R](https://englianhu.files.wordpress.com/2015/12/mastering-rstudio-develop-communicate-and-collaborate-with-r.pdf)，书中讲解得非常仔细。
   
