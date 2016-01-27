@@ -1,5 +1,8 @@
-# wordpress
-Posts on WordPress Blogs
+## Setup ®Studio Server
 
-The solution for upload large capacity post.
-[Nginx: 413 Request Entity Too Large Error and Solution](http://www.cyberciti.biz/faq/linux-unix-bsd-nginx-413-request-entity-too-large/)
+There are two files inside the tutorial which sharing how to setup ®Studio server on centOS 7.
+
+* [Introducing-RStudio-Server-for-Data-Scientists]()
+* [Introducing-RStudio-Server-for-Data-Scientists (Slides)]()
+ 
+
