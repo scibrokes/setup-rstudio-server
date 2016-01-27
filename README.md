@@ -1,5 +1,10 @@
-# wordpress
-Posts on WordPress Blogs
+## 安装 ®StudioとShiny服务器
 
-The solution for upload large capacity post.
-[Nginx: 413 Request Entity Too Large Error and Solution](http://www.cyberciti.biz/faq/linux-unix-bsd-nginx-413-request-entity-too-large/)
+**为数据科学家们量身定做の专业统计软件 --- [®Studio服务器](https://www.rstudio.com/)**
+
+  以下有两篇文章讲解如何在[Digital Ocean](http://www.digitalocean.com)のLinux CentOS 7操作系统上安装®StudioとShiny服务器。
+
+* [Introducing-RStudio-Server-for-Data-Scientists](https://englianhu.github.io/Introducing-RStudio-Server-for-Data-Scientists.html)
+* [Introducing-RStudio-Server-for-Data-Scientists (演示文稿)](https://englianhu.github.io/Introducing-RStudio-Server-for-Data-Scientists-slides.html)
+ 
+

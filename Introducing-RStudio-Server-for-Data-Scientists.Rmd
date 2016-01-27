@@ -180,6 +180,7 @@ enabled=1
   - 有关nginx网络服务器の**设定文件**默认路径应该位于/etc/nginx/nginx.conf，您可以随意/自行修改设置。
   - 您可以`cd /etc/nginx`后`ls -F`查看有哪些控件文件，详情请参阅[How To Configure The Nginx Web Server On a Virtual Private Server](https://www.digitalocean.com/community/tutorials/how-to-configure-the-nginx-web-server-on-a-virtual-private-server)
   - 您也可以参阅[How to Configure Nginx](https://www.linode.com/docs/websites/nginx/how-to-configure-nginx)
+  - 有关详细のCentOS上安装nginx并提供nginx设置の教程，请参阅[Nginx的安装和配置](http://yidao620c.github.io/blog/20151120/nginx.html)。
 
 ![*figure-1.2.2 : sample editing webpage content*](figure/nginx-edit-webpage.gif)
 
@@ -1083,6 +1084,8 @@ $git ls-files --deleted -z | xargs -0 git rm
   * 以下演示图教导如何使用R Markdown模板，模板内有嵌入默认程序包と设置，以及文件建立とR版本等信息。
 
 ![*figure-4.2.2 : create a rmarkdown sample 2*](figure/rmarkdown_2.gif)
+
+  您还可以通过添加YAML和CSS在您的R Markdown文件上以设置网页外观と格式，有关YAML请参阅[Yaml入门笔记](http://yidao620c.github.io/blog/20150522/yaml-introduce.html)。
   
 #### B. 新建演示文稿网页
 
@@ -1253,7 +1256,7 @@ location /rstudio/ {
 
 ### 第5.2章 : 统计学とR
 
-  它日会再分享统计学相关文章，您可以先参考以下一些统计学相关书籍：
+  倘若您的数据太大，您可以安装Hadoop或者sparkR，您可以参阅[centos6上安装Hadoop和HBase](http://yidao620c.github.io/blog/20150527/hadoop-hbase.html)以了解如何安装。它日会再分享统计学相关文章，您可以先参考以下一些统计学相关书籍：
   
   * [Modeling and Solving Linear Programming with R](https://englianhu.files.wordpress.com/2016/01/modeling-and-solving-linear-programming-with-r.pdf)
   * [Statistics with R](http://zoonek2.free.fr/UNIX/48_R/all.html)
