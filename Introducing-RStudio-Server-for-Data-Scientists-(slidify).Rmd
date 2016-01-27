@@ -180,7 +180,9 @@ enabled=1
 
 ### 第1.3章 : 安装CentOS/RHEL 7桌面
   
-  既然使用了centOS 7，那么安装个Desktopの话肯定方便使用。好，那么首先呢，就先查看一下CentOS/RHEL 7有啥软件应用组。
+  既然使用了centOS 7，那么安装个Desktopの话肯定方便使用。好！那么首先呢，就先查看一下CentOS/RHEL 7有啥软件应用组。
+  
+  **注明：**GNOME Desktop是独立の，就是と任何软件没有任何必须安装の连带关系，只是有了个桌面就容易操作了，不过暂时还没有找到个直接通过花鼠操控虚拟服务器内の鼠标の方式。
   
 ```{}
 [yugawa@xueqing ~]# sudo yum grouplist
@@ -223,43 +225,33 @@ Done
   要安装 GNOME 桌面组，请输入以下随便一行执行命令代码（安装过程可能需要好几分钟）：
 
 ```{}
-[yugawa@xueqing ~]# sudo yum groups mark install -y "GNOME Desktop" \\您可以运行此行执行命令代码或者
-[yugawa@xueqing ~]# sudo yum group mark install -y "GNOME Desktop"   \\此行执行命令代码，一样の效果
+[yugawa@xueqing ~]# sudo yum groups install -y "GNOME Desktop" \\您可以运行此行执行命令代码或者
+[yugawa@xueqing ~]# sudo yum groupinstall -y "GNOME Desktop"   \\此行执行命令代码，一样の效果
 ```
   
   **注明**：以上の执行代码后添加の`\\ ...`，只是注释而已，执行命令代码时无需输入。
 
-<s>
-To install Gnome on a RHEL 7 or CentOS Linux 7 server for operating network infrastructure services, with a GUI, enter:
-
-```{}
-[yugawa@xueqing ~]# sudo yum groups install "Server with GUI" \\您可以运行此行执行命令代码或者
-[yugawa@xueqing ~]# sudo yum groupinstall "Server with GUI"   \\此行执行命令代码，一样の效果
-```
-
-Now yum command will download all required packages from the internets or RHN if you are using Red Hat Enterprise Linux .
-
-How do I set the system to boot directly into the GUI in CentOS7/RHEL 7?
-
-Type the following command:
-
+  安装后，倘若您想要在RHEL/CentOS 7服务器设置个桌面登入页面，可以输入：
+  
 ```{}
 [yugawa@xueqing ~]# sudo systemctl set-default graphical.target
 ```
 
-How do I switch or start GUI login from command line?
-Type the following command if you do not want to reboot the server or desktop/laptop:
+  倘若您不想重启服务器，可以尝试以下执行命令代码以更换您登入画面。
 
 ```{}
 [yugawa@xueqing ~]# sudo systemctl start graphical.target
 ```
+  
+  现在当您登入时，您应该会看到以下画面；倘若没有该画面则`sudo reboot`。
 
-You should see login screen as follows:
+![GNOME Desktop Login](figure/GNOME-desktop-login.jpg)
+  
+  如果您登入后看到以下画面（可能画面还需要基本设置语言而已就能看到以下桌面画面），您のcentOS 7桌面安装完成了！
+  
+![GNOME Desktop](figure/GNOME-desktop.jpg)
 
-```{}
-[yugawa@xueqing ~]# sudo reboot
-```
-</s>
+  更多详情，请参阅：
 
   * [How To CentOS / RHEL 7 Install Gnome Desktop Using Yum](http://www.cyberciti.biz/faq/howto-install-gnome-gui-desktop-on-centos-rhel-7-server/)
   * [Install Gnome GUI on CentOS 7 / RHEL 7](http://www.itzgeek.com/how-tos/linux/centos-how-tos/install-gnome-gui-on-centos-7-rhel-7.html)
@@ -1122,7 +1114,7 @@ author('yugawa')
 
 *video-4.2.3 : shiny app sample*
 
-  您也可以参阅[Shiny Gallery](http://shiny.rstudio.com/gallery/)以了解更多Shiny相关例子。
+  您也可以参阅[Shiny Gallery](http://shiny.rstudio.com/gallery/)以了解更多Shiny相关例子，而[Web Application Development with R Using Shiny](https://englianhu.files.wordpress.com/2016/01/web-application-development-with-r-using-shiny.pdf)这本书讲解许多Shiny教程。来日会在分享Shiny文章，敬请期待哦...
 
 #### D. 新建R程序包
   
@@ -1209,7 +1201,7 @@ location /rstudio/ {
   * [playwith](https://github.com/floybix/playwith) - 绘制互动式图表
   * [fields](https://cran.r-project.org/web/packages/fields/index.html) - 绘制世界地图
   
-  您可以参阅以下例子，建立自己の项目包括报表、网站、程序包等。
+  您可以参阅以下例子，建立自己の项目包括报表、网站、程序包等。其中[An Introduction to R Markdown - Dynamic Documents for R](http://rpubs.com/mansun_kuo/24330)教导如何使用R Markdown，而 [Interactive Graphics with ggplot2+gridSVG](http://sachsmc.github.io/UseR2015-Talk/#18)讲解R与JavaScript基本互动。[SHOW ME SHINY Gallery of R Web Apps](http://www.showmeshiny.com/)展示了许多Apps可以参考。
   
   * [An Introduction to R Markdown - Dynamic Documents for R](http://rpubs.com/mansun_kuo/24330)
   * [R語言の工程面](http://wush978.github.io/REngineering/#1)
@@ -1244,6 +1236,14 @@ location /rstudio/ {
   * [Using R and ®Studio for Data Management - Statistical Analysis and Graphics (2nd Edition)](https://englianhu.files.wordpress.com/2016/01/using-r-and-rstudio-for-data-management-statistical-analysis-and-graphics-2nd-edit.pdf)
   * [Shinyを使ってR言語のプログラムをWebアプリ化する](http://tech-sketch.jp/2014/03/shiny-rweb.html)
 
+  引用句<div class='blue3'>子曰</div>，正所谓“搞不懂就问人，搞得懂就答人；没有人懂还可以问神...”，在此也分享一些实用の交流平台。
+  
+  * [Stack Over Flow](http://stackoverflow.com) - R语言编程相关问答交流平台
+  * [Stack Exchange](http://stats.stackexchange.com) - R语言统计学与数据可视化相关问答交流平台
+  * [统计之都](http://cos.name/cn) - 国内R语言交流平台
+  * [经管之家](http://bbs.pinggu.org) - 国内R语言交流与资源分享平台
+  * [R Nable](http://r.789695.n4.nabble.com)
+
 
 ### 第5.2章 : 统计学とR
 
@@ -1257,16 +1257,18 @@ location /rstudio/ {
   * [Linear Models with R](https://englianhu.files.wordpress.com/2016/01/faraway-linear-models-with-r-e28093-2009.pdf)
   * [Extending the Linear Model with R](https://englianhu.files.wordpress.com/2016/01/faraway-extending-the-linear-model-with-r-e28093-2006.pdf)
   * [迷你书 Rの极客理想-工具篇](https://englianhu.files.wordpress.com/2016/01/e8bfb7e4bda0e4b9a6-re79a84e69e81e5aea2e79086e683b3-e5b7a5e585b7e7af87.pdf)
+  * [In-depth introduction to machine learning in 15 hours of expert videos](http://www.r-bloggers.com/in-depth-introduction-to-machine-learning-in-15-hours-of-expert-videos/)
 
 
 
 ## 第6.章 : 附录
 
   * [第6.1章 : 文档建立]
-  * [第6.2章 : 感言と幕后制作花絮]
+  * [第6.2章 : 日志事件]
+  * [第6.3章 : 感言と幕后制作花絮]
     * [感言の言葉]
     * [幕后制作花絮与NG]
-  * [第6.3章 : 参考文献]
+  * [第6.4章 : 参考文献]
   
   
 ### 第6.1章 : 文档建立
@@ -1277,7 +1279,7 @@ location /rstudio/ {
   * `r R.version.string`
   * R version (short form): `r getRversion()`
   * `rmarkdown` package version: `r packageVersion('rmarkdown')`
-  * File version: 1.0.1
+  * File version: 1.0.2
   * File latest updated date: `r Sys.Date()`
   * Author Profile: [®γσ, Eng Lian Hu](http://rpubs.com/englianhu/ryoeng)
   * GitHub: [Source Code](https://github.com/englianhu/setup-rstudio-server)
@@ -1288,9 +1290,22 @@ lubridate::now()
 devtools::session_info()$platform
 Sys.info()
 ```
-
   
-### 第6.2章 : 感言と幕后制作花絮
+  
+### 第6.2章 : 日志事件
+  
+  * File version: 1.0.0
+    * file created
+  * File version: 1.0.2
+    * Added Blooper since retest the coding
+    * Added command code user management for centOS 7
+  * File version: 1.0.3
+    * Added setup for GNOME Desktop
+    * Added some explaination on Shiny references
+    * Added log file for version upgraded
+  
+  
+### 第6.3章 : 感言と幕后制作花絮
 
 #### 感言の言葉
   
@@ -1316,6 +1331,7 @@ Sys.info()
   - 本文章中，当一提及新の术语の时候，一般上都有添加可参阅链接，以方便学者可以立刻参考该术语の含义与应用等切确と相关资讯。
   - 在*figure-1.1.1 : Create Droplet*中注册のxueqing2，是再次测试xueqingと此教程而设。以确保质量管理。不过在下并不担心Scibrokes®の后台ip一览无余，因为都已经做足备份と随时可以修复、搬迁甚至新建新平台。
   - 正文中嵌入の代码都会呈现灰色背景颜色，以方便分辨那是可以运行の代码----电脑语言。
+  - [第1.3章 : 安装CentOS/RHEL 7桌面]同样の代码运行了很多次，参考了很多文章就是一`reboot`后服务器不仅没有重启反而就挂了，完全打不开。可以正常运行后，尝试开多几个Droplet测试，最后才能正式加入文章中。
   - 您可以发现*figure-2.3.1 : ®Studio server mainpage* 中の.Rhistory时间比下载rstudio-server-rhel-0.99.849-x86_64.rpmの时间较早几分钟时间，那是由于在下事先测试了一下才录制gif文件，却又忘了删除该文件。倘若是首次登入，绝对不会有.Rhistory文件存在。
   - 由于网络服务器系统一般上需要许多用户，故此在下特地参阅并测试了[CentOS 7用户账户配置](http://www.cnblogs.com/zutbaz/p/4248845.html)文章中の代码是否有误。
   - 在一些代码测试运行后却又无法有效实现/呈现应有の效果の问题上，都划上<s>删除横杠符号</s>，以方便它日温习并修正。
@@ -1343,7 +1359,7 @@ Sys.info()
 ![终止了ssh远程操作后，droplet内运行执行代码时无法打空格键（在其它地点上同样の网站却可以）](blooper/space-button-error2.gif)
 
 
-### 第6.3章 : 参考文献
+### 第6.4章 : 参考文献
   
   * [Initial Server Setup with CentOS 7](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-centos-7)
   * [How To Add and Delete Users on a CentOS 7 Server](https://www.digitalocean.com/community/tutorials/how-to-add-and-delete-users-on-a-centos-7-server)
