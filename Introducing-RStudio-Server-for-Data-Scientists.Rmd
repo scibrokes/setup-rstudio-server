@@ -26,13 +26,12 @@ suppressAll(lib(pkgs)); rm(pkgs)
 
 ## 文摘简介
 
-  前阵子受[堰平](http://yanping.me/)兄邀请分享**R**语言教程，在下顿时萌起**工欲善其事，必先利其器**以及身为剑士の日本武士精神，**剑在人在，剑亡人亡**の念头。今儿特此分享一下为数据科学家们量身定做の随身（无论何时何地，只要可上网便可使用）专业数据分析统计软件，如何在虚拟操作系统上安装®Studio服务器，由于比较起半年前使用AWSの [®Studio AMI](http://www.louisaslett.com/RStudio_AMI/)，这 [DigitalOcean.com](https://www.digitalocean.com/) 价廉物美，故此在下选择使用 DO。
+  前阵子受[堰平](http://yanping.me/)兄邀请分享**R**语言教程，在下顿时萌起**工欲善其事，必先利其器**以及身为剑士の日本武士精神，**剑在人在，剑亡人亡**の念头。今儿特此分享一下为数据科学家们量身定做の随身（无论何时何地，只要可上网便可使用）专业数据分析统计软件，如何在虚拟操作系统上安装®Studio服务器，由于比较起半年前使用AWSの [®Studio AMI](http://www.louisaslett.com/RStudio_AMI/)，这 [DigitalOcean.com](https://m.do.co/c/aabb124120d0) 价廉物美，故此在下选择使用 DO。
   
   然而®Studio AMI作者[Louis Aslett](http://www.louisaslett.com)已设置好所有设定，您只需区区几个按键即可使用（虽两者都需要付月租，而自然手动安装，没有管理员权限，每个月得付月租）。倘若您有安卓行动电话，亦可直接到GooglePlay签购[®Instructor](https://play.google.com/store/apps/details?id=appinventor.ai_RInstructor.R2&hl=en)，作者[Shidan Murphy](http://www.rinstructor.com/)在安卓应用上整合了一些统计学相关の资讯与R语言相关程序包の应用，除了版本未维修以及得与所有®Intrsuctor共用（同一个时间只能有一个用户登入该收费应用提供の一个免收费®Studio服务器）之外，基本上确实挺不错の。在此简略比较一下在下使用过の软件：
   
 |                 种类                                                                             |               简易性 |                              权限自主权 |                         收费 |                      额外服务 |
 |:-------------------------------------------------------------------------------------------------|----------------------|-----------------------------------------|------------------------------|------------------------------:|
-| [DigitalOcean](https://www.digitalocean.com/)                                                    |     手动由始开始安装 |        所有自主权，可以自行添加任何会员 |                月租由5美元起 | 支持大数据分析                |
 | [®Studio AMI](http://www.louisaslett.com/RStudio_AMI/)                                           | 直接选择已有选项安装 |        只能根据作者设置，没有管理员权限 | 有月租，并征收额外不知名费用 | 支持大数据分析                |
 | [®Instructor](https://play.google.com/store/apps/details?id=appinventor.ai_RInstructor.R2&hl=en) |   无需安装，直接使用 | 作者已多时没有维修，已过时版本 并无权限 |           一次签购低于10美元 | 软件附有统计学与基本R语言教程 |
 
@@ -50,7 +49,7 @@ suppressAll(lib(pkgs)); rm(pkgs)
 
 ### 第1.1章 : 选择网络虚拟操作系统
 
-  首先您可以网络选择虚拟操作系统，[何谓网络服务器](http://baike.baidu.com/view/460250.htm)在下就不多说。今儿就介绍一下这 DigitalOcean.com，您亦可选择：
+  首先您可以网络选择虚拟操作系统，[何谓网络服务器](http://baike.baidu.com/view/460250.htm)在下就不多说。今儿就介绍一下这 [DigitalOcean.com](https://m.do.co/c/aabb124120d0)，您亦可选择：
   
   - ®Studio AMI
   - Azure（可观看[Data Science with Microsoft Azure Machine Learning, Microsoft SQL Server and R](https://www.youtube.com/watch?v=_kMIns-MK0s)视频教程）
@@ -264,6 +263,8 @@ Done
   * [Install Gnome GUI on CentOS 7 / RHEL 7](http://www.itzgeek.com/how-tos/linux/centos-how-tos/install-gnome-gui-on-centos-7-rhel-7.html)
   * [How to install GUI Gnome on CentOS 7 Linux system](http://linuxconfig.org/how-to-install-gui-gnome-on-centos-7-linux-system)
   * [How to install Desktop Environments on CentOS 7?](http://unix.stackexchange.com/questions/181503/how-to-install-desktop-environments-on-centos-7)
+
+  由于在网页上操作太不方便了，故此您还可以设置个远程桌面，详情请参阅[]()。
 
 
 
@@ -1085,7 +1086,7 @@ $git ls-files --deleted -z | xargs -0 git rm
 
 ![*figure-4.2.2 : create a rmarkdown sample 2*](figure/rmarkdown_2.gif)
 
-  您还可以通过添加YAML和CSS在您的R Markdown文件上以设置网页外观と格式，有关YAML请参阅[Yaml入门笔记](http://yidao620c.github.io/blog/20150522/yaml-introduce.html)。
+  除此之外，您也可以安装[rticles](https://github.com/rstudio/rticles)程序包哦！您还可以通过添加YAML和CSS在您的R Markdown文件上以设置网页外观と格式，有关YAML请参阅[Yaml入门笔记](http://yidao620c.github.io/blog/20150522/yaml-introduce.html)。
   
 #### B. 新建演示文稿网页
 
