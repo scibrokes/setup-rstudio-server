@@ -2,8 +2,8 @@ name: Introducing-RStudio-Server-for-Data-Scientists
 account: englianhu
 server: beta.rstudioconnect.com
 appId: 422
-bundleId: 736
+bundleId: 861
 url: https://beta.rstudioconnect.com/englianhu/Introducing-RStudio-Server-for-Data-Scientists/
-when: 1454309250.14572
+when: 1456073335.61352
 asMultiple: TRUE
 asStatic: FALSE

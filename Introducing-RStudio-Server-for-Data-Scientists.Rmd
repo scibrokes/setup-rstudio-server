@@ -264,7 +264,7 @@ Done
   * [How to install GUI Gnome on CentOS 7 Linux system](http://linuxconfig.org/how-to-install-gui-gnome-on-centos-7-linux-system)
   * [How to install Desktop Environments on CentOS 7?](http://unix.stackexchange.com/questions/181503/how-to-install-desktop-environments-on-centos-7)
 
-  由于在网页上操作太不方便了，故此您还可以设置个远程桌面，详情请参阅[]()。
+  由于在网页上操作太不方便了，故此您还可以设置个远程桌面，详情请参阅[How To Install and Configure VNC Remote Access for the GNOME Desktop on CentOS 7](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-vnc-remote-access-for-the-gnome-desktop-on-centos-7?comment=35734)。它日会再分享更多centOS操作系统专页文章。
 
 
 

@@ -26,7 +26,6 @@ suppressAll(lib(pkgs)); rm(pkgs)
   
 |                 种类                                                                             |               简易性 |                              权限自主权 |                         收费 |                      额外服务 |
 |:-------------------------------------------------------------------------------------------------|----------------------|-----------------------------------------|------------------------------|------------------------------:|
-| [DigitalOcean](https://m.do.co/c/aabb124120d0)                                                    |     手动由始开始安装 |        所有自主权，可以自行添加任何会员 |                月租由5美元起 | 支持大数据分析                |
 | [®Studio AMI](http://www.louisaslett.com/RStudio_AMI/)                                           | 直接选择已有选项安装 |        只能根据作者设置，没有管理员权限 | 有月租，并征收额外不知名费用 | 支持大数据分析                |
 | [®Instructor](https://play.google.com/store/apps/details?id=appinventor.ai_RInstructor.R2&hl=en) |   无需安装，直接使用 | 作者已多时没有维修，已过时版本 并无权限 |           一次签购低于10美元 | 软件附有统计学与基本R语言教程 |
 
@@ -59,7 +58,7 @@ suppressAll(lib(pkgs)); rm(pkgs)
 
   当我们谈及虚拟操作系统或者服务器，Linux开源操作系统绝对是首选，因为它在这领域の研发与功能远远超过WindowsとMac，而且还有许多程序包可以读取使用。
   
-  大约几分钟时间建立了Droplet后，系统将会显示个ip地址：[46.101.160.242](http://46.101.160.242)（好比您の虚拟公司地址），然后建议您造访[PuTTY](http://www.putty.org/) 网站，并下载个独立工具来管理网络构建の虚拟操作系统，您亦可直接在网站上运行代码。（您亦可通过谷歌随意搜索并使用个网络版SSH即可，没有任何软件限制）您亦可在**Saved Sessions**随意填写个名字后**Save**，以方便以后每次打开PuTTYの时候，直接选择该**Session**后**Load**，那么就无需时时记得ip，每次都得输入ip。
+  大约几分钟时间建立了Droplet后，系统将会显示个ip地址：[46.101.160.242](http://46.101.160.242)（好比您の虚拟公司地址），然后建议您造访[PuTTY](http://www.putty.org/) 网站，并下载个独立工具来管理网络构建の虚拟操作系统，您亦可直接在网站上运行代码。您亦可在**Saved Sessions**随意填写个名字后**Save**，以方便以后每次打开PuTTYの时候，直接选择该**Session**后**Load**，那么就无需时时记得ip，每次都得输入ip。
 
 ![*figure-1.1.2 : PuTTY - SSH*](figure/PuTTY.gif)
 
@@ -174,7 +173,7 @@ enabled=1
   - 有关nginx网络服务器の**设定文件**默认路径应该位于/etc/nginx/nginx.conf，您可以随意/自行修改设置。
   - 您可以`cd /etc/nginx`后`ls -F`查看有哪些控件文件，详情请参阅[How To Configure The Nginx Web Server On a Virtual Private Server](https://www.digitalocean.com/community/tutorials/how-to-configure-the-nginx-web-server-on-a-virtual-private-server)
   - 您也可以参阅[How to Configure Nginx](https://www.linode.com/docs/websites/nginx/how-to-configure-nginx)
-  - 有关详细のCentOS上安装nginx并提供nginx设置の教程，请参阅[Nginxの安装と配置](http://yidao620c.github.io/blog/20151120/nginx.html)。
+  - 有关详细のCentOS上安装nginx并提供nginx设置の教程，请参阅[Nginx的安装和配置](http://yidao620c.github.io/blog/20151120/nginx.html)。
 
 ![*figure-1.2.2 : sample editing webpage content*](figure/nginx-edit-webpage.gif)
 
@@ -258,6 +257,8 @@ Done
   * [Install Gnome GUI on CentOS 7 / RHEL 7](http://www.itzgeek.com/how-tos/linux/centos-how-tos/install-gnome-gui-on-centos-7-rhel-7.html)
   * [How to install GUI Gnome on CentOS 7 Linux system](http://linuxconfig.org/how-to-install-gui-gnome-on-centos-7-linux-system)
   * [How to install Desktop Environments on CentOS 7?](http://unix.stackexchange.com/questions/181503/how-to-install-desktop-environments-on-centos-7)
+
+  由于在网页上操作太不方便了，故此您还可以设置个远程桌面，详情请参阅[How To Install and Configure VNC Remote Access for the GNOME Desktop on CentOS 7](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-vnc-remote-access-for-the-gnome-desktop-on-centos-7?comment=35734)。它日会再分享更多centOS操作系统专页文章。
 
 
 
@@ -1250,7 +1251,7 @@ location /rstudio/ {
 
 ### 第5.2章 : 统计学とR
 
-  倘若您の数据太大，您可以安装Hadoop或者sparkR，您可以参阅[centos6上安装HadoopとHBase](http://yidao620c.github.io/blog/20150527/hadoop-hbase.html)以了解如何安装。它日会再分享统计学相关文章，您可以先参考以下一些统计学相关书籍：
+  倘若您的数据太大，您可以安装Hadoop或者sparkR，您可以参阅[centos6上安装Hadoop和HBase](http://yidao620c.github.io/blog/20150527/hadoop-hbase.html)以了解如何安装。它日会再分享统计学相关文章，您可以先参考以下一些统计学相关书籍：
   
   * [Modeling and Solving Linear Programming with R](https://englianhu.files.wordpress.com/2016/01/modeling-and-solving-linear-programming-with-r.pdf)
   * [Statistics with R](http://zoonek2.free.fr/UNIX/48_R/all.html)
