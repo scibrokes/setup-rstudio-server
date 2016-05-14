@@ -1,5 +1,5 @@
 ---
-title: "![®Studio](https://www.rstudio.com/wp-content/uploads/2014/03/blue-125.png)"
+title: "![®Studio](https://raw.githubusercontent.com/scibrokes/setup-rstudio-server/master/figure/rstudio.jpg)"
 author: "[®γσ, Eng Lian Hu](http://englianhu.wordpress.com) <img src='figure/ShirotoNorimichi.jpg' width='24'> 白戸則道®"
 date: "1/17/2016"
 output: 
