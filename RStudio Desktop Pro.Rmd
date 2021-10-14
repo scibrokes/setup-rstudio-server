@@ -1,0 +1,42 @@
+---
+title: "![®Studio](https://raw.githubusercontent.com/scibrokes/setup-rstudio-server/master/figure/rstudio.jpg)"
+author: "[®γσ, Eng Lian Hu](http://englianhu.wordpress.com) <img src='figure/....jpg' width='24'> ®"
+date: "1/17/2016"
+output: 
+  slidy_presentation:
+    toc: yes
+---
+
+```
+:~$ ssh-keygen -o -t ed25519 -C "englianhu@gmail.com"       
+Generating public/private ed25519 key pair.
+Enter file in which to save the key (/home/englianhu/.ssh/id_ed25519): 
+/home/englianhu/.ssh/id_ed25519 already exists.
+Overwrite (y/n)? y
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /home/englianhu/.ssh/id_ed25519
+Your public key has been saved in /home/englianhu/.ssh/id_ed25519.pub
+The key fingerprint is:
+SHA256:a8uY3X1dN7RyHQ5439nmVJ8TmZAFYP4zhlpztv4O+kA englianhu@gmail.com
+The key's randomart image is:
++--[ED25519 256]--+
+|           o..+. |
+|          o  o   |
+|           .. . o|
+|           .oo *.|
+|        S  E.B= %|
+|         .+ =.+XX|
+|        o. . oo==|
+|       * o .+ o o|
+|      o + ..o+oo |
++----[SHA256]-----+
+:~$ cat ~/.ssh/id_rsa.pub                             
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCe46Gae0CTEpKeIKFGpXvhSn03swWvQiqcNFIKYOa+ofQVD/U9XIj5o6bzZryV113doJO9sK/ZLyCp9T024EU0NBBGZf0n9pekH6tzJfV8t8yQk2nP0TTZ14RTBG1/WPQ9qOGLZ54deqgyg4nYlpii1koUhN4yUW/r44iSyWj9YQefSuzEfPumn+LIJ3tQ+gABjrn2fka54y/wSLqe5yJl62/WX1zRdOnItFkMlVd/I9Jc8zti2M/l2OAcXGtIPfPEokFItxo0M/DY0QwsGOMxlzkidH+xsFFMcV8YUspxd12Tm9ffpOj+sSiMbjhyGqu9FAeoyBMqTH5tDdj/TB3ixQAPXLHUvrzqef5t3a5kA3+AaLK/uBH/U+IjXoG/52myvqEHTodb14rw51HPRjNhLGlUkywDu8RGDV9ZbkCz8NZBRSNUCpCxe4YJ2i2cES/LpP98tA9JfTCGnOZ3InEb1jLnwghMPhV404+hn1gW4pnMj8CzEH4L62RFQn0NiiTxAFz0SMO0uwP6ANuyoeejrWdoskkUVVtMyrE810MpVZN2FU7Iv3uD29coZT95HSJJ4cox8lgw8dg6ziKMZvGWOlYUyc7KN+wjQvt1XDdlJ3/Hw+Wqh/4vOAWRoHJs81MVqueub63wUKziFYwJgquvG3RyjPts51SM/eZfL0c2rQ== englianhu@gmail.com
+```
+
+Kindly refer to <https://jdblischak.github.io/2014-09-18-chicago/novice/git/05-sshkeys.html> and <https://docs.axway.com/bundle/SecureClient_64_UserGuide_allOS_en_HTML5/page/Content/UsersGuide/t_GeneratingaKey.htm> for more information.
+
+
+[Connect to github with `ED25519`](https://gist.github.com/hrdtbs/ba50868d7d608b89f958fe32dc35fdd4#gistcomment-3926821)
+
