@@ -1,6 +1,6 @@
 ---
 title: "![®Studio](https://raw.githubusercontent.com/scibrokes/setup-rstudio-server/master/figure/rstudio.jpg)"
-author: "[®γσ, Eng Lian Hu](http://englianhu.wordpress.com) <img src='figure/....jpg' width='24'> ®"
+author: "[®γσ, Eng Lian Hu](http://englianhu.wordpress.com) <img src='figure/quantitative trader.jpg' width='24'> ®"
 date: "1/17/2016"
 output: 
   slidy_presentation:
