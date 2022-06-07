@@ -13,7 +13,7 @@
 
  ------------------------------------------------------------------------
 
-## 文摘简介
+### 文摘简介
 
   前阵子受[堰平](http://yanping.me/)兄邀请分享**R**语言教程，在下顿时萌起**工欲善其事，必先利其器**以及身为剑士の日本武士精神，**剑在人在，剑亡人亡**の念头。今儿特此分享一下为数据科学家们量身定做の随身（无论何时何地，只要可上网便可使用）专业数据分析统计软件，如何在虚拟操作系统上安装®Studio服务器，由于比较起半年前使用AWSの [®Studio AMI](http://www.louisaslett.com/RStudio_AMI/)，这 [DigitalOcean.com](https://m.do.co/c/aabb124120d0) 价廉物美，故此在下选择使用 DO。
   
@@ -26,6 +26,27 @@
 
 *table-0.0.1 : comparison of used ®Studio server*
 
+### 「原创」R-4.2.0 (2022-04-30)
+
+引用：[「原创」R-4.2.0 (2022-04-30)](https://www.jianshu.com/p/315eb443b1a8)
+
+R语言程序包除了CRAN，还有其它仓库如下:
+
+- [CRAN](https://cloud.r-project.org)
+- [RSM](https://radiant-rstats.github.io/minicran)
+- [Omega](http://www.omegahat.net/R)
+- [CINC](https://cinc.rud.is)
+- [RForge](https://www.rforge.net)
+- [RSpatial](https://rspatial.r-universe.dev)
+- [Bioconductor](https://www.bioconductor.org)
+
+以下网站列出R程序包：
+
+- [R package list](https://raw.githubusercontent.com/hoxo-m/gepuro-task-views-copy/master/package_list.txt)
+
+<br><br>
+
 ---
 
-<span style='color:RoyalBlue'>**Powered by - Copyright® Intellectual Property Rights of [<img src="figure/Scibrokes.png" width="14"/> Sςιβrοκεrs Trαdιηg®](http://www.scibrokes.com) 個人の経営企業**</span>
+[<img src="figure/Scibrokes.png" height="14"/> Sςιβrοκεrs Trαdιηg®](http://www.scibrokes.com)<br>
+<span style='color:RoyalBlue'>**[<img src="figure/Scibrokes.png" height="14"/> 世博量化®](http://www.scibrokes.com)企业知识产权®及版权®所有，盗版必究。**</span>
